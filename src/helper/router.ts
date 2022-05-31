@@ -1,6 +1,6 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 
-import vHome from '@/views/home/index.vue'
+import vHome from '@/apps/home/index.vue'
 
 const routes = [
   {
@@ -18,7 +18,7 @@ const routes = [
         meta: {
           title: '图表',
         },
-        component: () => import('@/views/basecharts.vue'),
+        component: () => import('@/apps/basecharts.vue'),
       },
       {
         path: '/form',
@@ -26,7 +26,7 @@ const routes = [
         meta: {
           title: '表单',
         },
-        component: () => import('@/views/baseform.vue'),
+        component: () => import('@/apps/baseform.vue'),
       },
       {
         path: '/table',
@@ -34,7 +34,7 @@ const routes = [
         meta: {
           title: '表格',
         },
-        component: () => import('@/views/basetable.vue'),
+        component: () => import('@/apps/basetable.vue'),
       },
       {
         path: '/dashboard',
@@ -42,7 +42,7 @@ const routes = [
         meta: {
           title: '系统首页',
         },
-        component: () => import('@/views/dashboard.vue'),
+        component: () => import('@/apps/dashboard.vue'),
       },
       {
         path: '/editor',
@@ -50,7 +50,7 @@ const routes = [
         meta: {
           title: '富文本编辑器',
         },
-        component: () => import('@/views/editor.vue'),
+        component: () => import('@/apps/editor.vue'),
       },
       {
         path: '/i18n',
@@ -58,7 +58,7 @@ const routes = [
         meta: {
           title: '国际化',
         },
-        component: () => import('@/views/i18n.vue'),
+        component: () => import('@/apps/i18n.vue'),
       },
       {
         path: '/permission',
@@ -67,7 +67,7 @@ const routes = [
           title: '权限管理',
           permission: true,
         },
-        component: () => import('@/views/permission.vue'),
+        component: () => import('@/apps/permission.vue'),
       },
       {
         path: '/upload',
@@ -75,7 +75,7 @@ const routes = [
         meta: {
           title: '上传插件',
         },
-        component: () => import('@/views/upload.vue'),
+        component: () => import('@/apps/upload.vue'),
       },
       {
         path: '/user',
@@ -83,7 +83,7 @@ const routes = [
         meta: {
           title: '个人中心',
         },
-        component: () => import('@/views/user.vue'),
+        component: () => import('@/apps/user.vue'),
       },
       {
         path: '/tabs',
@@ -91,7 +91,7 @@ const routes = [
         meta: {
           title: '选项卡',
         },
-        component: () => import('@/views/tabs.vue'),
+        component: () => import('@/apps/tabs.vue'),
       },
       {
         path: '/404',
@@ -99,7 +99,7 @@ const routes = [
         meta: {
           title: '找不到页面',
         },
-        component: () => import('@/views/404.vue'),
+        component: () => import('@/apps/404.vue'),
       },
       {
         path: '/403',
@@ -107,7 +107,7 @@ const routes = [
         meta: {
           title: '没有权限',
         },
-        component: () => import('@/views/403.vue'),
+        component: () => import('@/apps/403.vue'),
       },
     ],
   },
@@ -117,7 +117,7 @@ const routes = [
     meta: {
       title: '登录',
     },
-    component: () => import('@/views/login.vue'),
+    component: () => import('@/apps/login.vue'),
   },
 ]
 

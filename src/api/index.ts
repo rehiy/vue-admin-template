@@ -1,4 +1,4 @@
-import request from '@/utils/request'
+import request from '@/helper/request'
 
 export const fetchData = (query) => {
   return request({

@@ -127,7 +127,7 @@
 <script>
 import { reactive } from 'vue'
 
-import { Bar, Line, Colors } from '@/plugins/chartjs'
+import { Bar, Line, Colors } from '@/plugin/chartjs'
 
 export default {
     components: {

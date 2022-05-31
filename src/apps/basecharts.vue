@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import { Bar, Line, Pie, Doughnut, Colors } from '@/plugins/chartjs'
+import { Bar, Line, Pie, Doughnut, Colors } from '@/plugin/chartjs'
 
 export default {
   components: {
