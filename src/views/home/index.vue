@@ -1,18 +1,16 @@
 <template>
-  <div class="about">
-    <v-header />
-    <v-sidebar />
-    <div class="content-box" :class="{ 'content-collapse': collapse }">
-      <v-tags></v-tags>
-      <div class="content">
-        <router-view v-slot="{ Component }">
-          <transition name="move" mode="out-in">
-            <keep-alive :include="tagsList">
-              <component :is="Component" />
-            </keep-alive>
-          </transition>
-        </router-view>
-      </div>
+  <v-header />
+  <v-sidebar />
+  <div class="content-box" :class="{ 'content-collapse': collapse }">
+    <v-tags></v-tags>
+    <div class="content">
+      <router-view v-slot="{ Component }">
+        <transition name="move" mode="out-in">
+          <keep-alive :include="tagsList">
+            <component :is="Component" />
+          </keep-alive>
+        </transition>
+      </router-view>
     </div>
   </div>
 </template>
@@ -21,9 +19,9 @@
 import { computed } from 'vue'
 import { useStore } from 'vuex'
 
-import vHeader from '@/components/header.vue'
-import vSidebar from '@/components/sidebar.vue'
-import vTags from '@/components/tags.vue'
+import vHeader from './header.vue'
+import vSidebar from './sidebar.vue'
+import vTags from './tags.vue'
 
 export default {
   components: {
