@@ -17,7 +17,7 @@
                 </el-icon>
               </span>
             </div>
-            <div class="info-name">{{ name }}</div>
+            <div class="info-name">{{ username }}</div>
             <div class="info-desc">不可能！我的代码怎么可能会有bug！</div>
           </div>
         </el-card>
@@ -119,7 +119,7 @@ export default {
     }
 
     return {
-      name,
+      username,
       form,
       onSubmit,
       cropper,

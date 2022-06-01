@@ -233,7 +233,7 @@ export default {
             },
         }
         return {
-            name,
+            username,
             chart1,
             chart2,
             todoList,
