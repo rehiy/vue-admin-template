@@ -97,12 +97,16 @@ export default {
         title: '错误处理',
         subs: [
           {
-            index: '/permission',
-            title: '权限测试',
+            index: '/403',
+            title: '403页面',
           },
           {
             index: '/404',
             title: '404页面',
+          },
+          {
+            index: '/permission',
+            title: '权限测试',
           },
         ],
       }
