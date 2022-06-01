@@ -6,7 +6,7 @@
                     <div class="user-info">
                         <img src="@/assets/img/avatar.jpg" class="user-avator" />
                         <div class="user-info-cont">
-                            <div class="user-info-name">{{ name }}</div>
+                            <div class="user-info-name">{{ username }}</div>
                             <div>{{ role }}</div>
                         </div>
                     </div>
@@ -135,7 +135,7 @@ export default {
     },
     name: 'dashboard',
     setup() {
-        const name = localStorage.getItem('vt_username')
+        const username = localStorage.getItem('vt_username')
         const role = name === 'admin' ? '超级管理员' : '普通用户'
         const todoList = reactive([
             {
