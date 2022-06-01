@@ -6,10 +6,10 @@ import store from '@/helper/store'
 import router from '@/helper/router'
 
 import useElement from '@/plugin/element'
-import useLocales from '@/plugin/i18n/index'
+import useI18n from '@/plugin/i18n'
 
 const app = createApp(App)
 
-useLocales(useElement(app))
+useElement(app), useI18n(app)
 
 app.use(store).use(router).mount('#app')
