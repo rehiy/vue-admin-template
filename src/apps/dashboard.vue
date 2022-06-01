@@ -136,7 +136,7 @@ export default {
     name: 'dashboard',
     setup() {
         const username = localStorage.getItem('vt_username')
-        const role = name === 'admin' ? '超级管理员' : '普通用户'
+        const role = username === 'admin' ? '超级管理员' : '普通用户'
         const todoList = reactive([
             {
                 title: '今天要修复100个bug',
