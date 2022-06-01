@@ -13,6 +13,22 @@ const routes = [
     component: vHome,
     children: [
       {
+        path: '/403',
+        name: '403',
+        meta: {
+          title: '没有权限',
+        },
+        component: () => import('@/apps/error/403.vue'),
+      },
+      {
+        path: '/404',
+        name: '404',
+        meta: {
+          title: '找不到页面',
+        },
+        component: () => import('@/apps/error/404.vue'),
+      },
+      {
         path: '/charts',
         name: 'basecharts',
         meta: {
@@ -92,22 +108,6 @@ const routes = [
           title: '选项卡',
         },
         component: () => import('@/apps/tabs.vue'),
-      },
-      {
-        path: '/403',
-        name: '403',
-        meta: {
-          title: '没有权限',
-        },
-        component: () => import('@/apps/error/403.vue'),
-      },
-      {
-        path: '/404',
-        name: '404',
-        meta: {
-          title: '找不到页面',
-        },
-        component: () => import('@/apps/error/404.vue'),
       },
     ],
   },

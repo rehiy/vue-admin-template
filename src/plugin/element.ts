@@ -1,29 +1,14 @@
-import * as ElementPlusIconsVue from '@element-plus/icons-vue'
-
 import ElementPlus from 'element-plus'
-import 'element-plus/theme-chalk/index.css'
-
-import { createI18n } from 'vue-i18n/index'
-
-import localeZH from 'element-plus/lib/locale/lang/zh-cn'
-import localeEN from 'element-plus/lib/locale/lang/en'
-
-import messages from '@/helper/i18n'
-
-const i18n = createI18n({
-  locale: localeZH.name,
-  fallbackLocale: localeEN.name,
-  messages,
-})
+import * as Icons from '@element-plus/icons-vue'
+import zhCn from 'element-plus/lib/locale/lang/zh-cn'
 
 export default (app) => {
 
-  for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
+  for (const [key, component] of Object.entries(Icons)) {
     app.component(key, component)
   }
 
-  app.use(ElementPlus, { locale: localeZH })
-  app.use(i18n)
+  app.use(ElementPlus, { locale: zhCn })
 
   return app
 
