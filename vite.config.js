@@ -3,15 +3,29 @@ import ElementPlus from 'unplugin-element-plus/vite'
 
 export default {
     base: './',
-    resolve: {
-        alias: {
-            '@': '/src'
-        }
+    build: {
+        outDir: 'build',
+        assetsDir: 'assets',
+        manifest: false
     },
     plugins: [
         vue(),
         ElementPlus({
             useSource: true,
         })
-    ]
+    ],
+    resolve: {
+        alias: {
+            '~': '/node_modules',
+            '@': '/src'
+        }
+    },
+    server: {
+        proxy: {
+            '/api': {
+                target: 'http://127.0.0.1:8080',
+                changeOrgin: true,
+            }
+        }
+    }
 }
