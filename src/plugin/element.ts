@@ -3,7 +3,7 @@ import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 import ElementPlus from 'element-plus'
 import 'element-plus/theme-chalk/index.css'
 
-import { createI18n } from 'vue-i18n'
+import { createI18n } from 'vue-i18n/index'
 
 import localeZH from 'element-plus/lib/locale/lang/zh-cn'
 import localeEN from 'element-plus/lib/locale/lang/en'
