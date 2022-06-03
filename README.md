@@ -12,7 +12,7 @@
 
 # 特别说明
 
-项目初始版本基于 [vue-manage-system](https://github.com/lin-xin/vue-manage-system)，在实际使用过程种，对样式和构架进行了大范围的重写，故在此作为全新的项目进行发布。
+项目初始版本基于 [vue-manage-system](https://github.com/lin-xin/vue-manage-system)，在实际使用过程种，对样式和构架进行了大范围的重写。为避免和原项目混淆，在此作为全新的项目进行发布。
 
 # License
 
