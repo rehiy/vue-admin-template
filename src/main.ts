@@ -1,15 +1,20 @@
-import { createApp } from 'vue'
+import { createApp } from 'vue';
 
-import App from '@/App.vue'
+import App from '@/app.vue';
+import '@/assets/style.scss';
 
-import store from '@/helper/store'
-import router from '@/helper/router'
+import setupElement from '@/helper/element';
+import setupI18n from '@/helper/i18n';
 
-import useElement from '@/plugin/element'
-import useI18n from '@/plugin/i18n'
+import setupStore from '@/store/index';
+import router from '@/router/index';
 
-const app = createApp(App)
+const app = createApp(App);
 
-useElement(app), useI18n(app)
+setupElement(app);
+setupI18n(app);
 
-app.use(store).use(router).mount('#app')
+setupStore(app);
+
+app.use(router);
+app.mount('#app');

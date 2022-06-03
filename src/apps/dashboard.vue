@@ -10,12 +10,8 @@
                             <div>{{ role }}</div>
                         </div>
                     </div>
-                    <div class="user-info-list">
-                        上次登录时间： <span>2019-11-01</span>
-                    </div>
-                    <div class="user-info-list">
-                        上次登录地点： <span>上清</span>
-                    </div>
+                    <div class="user-info-list">上次登录时间： <span>2019-11-01</span></div>
+                    <div class="user-info-list">上次登录地点： <span>上清</span></div>
                 </el-card>
                 <el-card shadow="hover" style="height: 252px">
                     <template #header>
@@ -90,7 +86,7 @@
                         </el-table-column>
                         <el-table-column>
                             <template #default="scope">
-                                <div class="todo-item" :class="{ 'todo-item-del': scope.row.status, }">
+                                <div class="todo-item" :class="{ 'todo-item-del': scope.row.status }">
                                     {{ scope.row.title }}
                                 </div>
                             </template>
@@ -112,138 +108,124 @@
         <el-row :gutter="20">
             <el-col :span="12">
                 <el-card shadow="hover">
-                    <Bar :chart-data="chart1.data" :chart-options="chart1.options" />
+                    <bar :chart-data="chart1.data" :chart-options="chart1.options" />
                 </el-card>
             </el-col>
             <el-col :span="12">
                 <el-card shadow="hover">
-                    <Line :chart-data="chart2.data" :chart-options="chart2.options" />
+                    <line :chart-data="chart2.data" :chart-options="chart2.options" />
                 </el-card>
             </el-col>
         </el-row>
     </div>
 </template>
 
-<script>
-import { reactive } from 'vue'
+<script lang="ts" setup>
+import { reactive } from 'vue';
 
-import { Bar, Line, Colors } from '@/plugin/chartjs'
+import { Bar, Line, Colors } from '@/helper/chartjs';
 
-export default {
-    components: {
-        Bar, Line
+const username = localStorage.getItem('vt_username');
+const role = username === 'admin' ? '超级管理员' : '普通用户';
+const todoList = reactive([
+    {
+        title: '今天要修复100个bug',
+        status: false,
     },
-    name: 'dashboard',
-    setup() {
-        const username = localStorage.getItem('vt_username')
-        const role = username === 'admin' ? '超级管理员' : '普通用户'
-        const todoList = reactive([
-            {
-                title: '今天要修复100个bug',
-                status: false,
-            },
-            {
-                title: '今天要修复100个bug',
-                status: false,
-            },
-            {
-                title: '今天要写100行代码加几个bug吧',
-                status: false,
-            },
-            {
-                title: '今天要修复100个bug',
-                status: false,
-            },
-            {
-                title: '今天要修复100个bug',
-                status: true,
-            },
-            {
-                title: '今天要写100行代码加几个bug吧',
-                status: true,
-            },
-        ])
-        const chart1 = {
-            type: 'bar',
-            data: {
-                labels: ['周一', '周二', '周三', '周四', '周五'],
-                datasets: [
-                    {
-                        label: '家电',
-                        data: [234, 278, 270, 190, 230],
-                        backgroundColor: Colors[0]
-
-                    },
-                    {
-                        label: '百货',
-                        data: [164, 178, 190, 135, 160],
-                        backgroundColor: Colors[1]
-                    },
-                    {
-                        label: '食品',
-                        data: [144, 198, 150, 235, 120],
-                        backgroundColor: Colors[2]
-                    },
-                ]
-            },
-            options: {
-                plugins: {
-                    title: {
-                        display: true,
-                        text: '最近一周各品类销售图',
-                        font: {
-                            size: 16
-                        }
-                    }
-                }
-            },
-        }
-        const chart2 = {
-            type: 'line',
-            data: {
-                labels: ['6月', '7月', '8月', '9月', '10月'],
-                datasets: [
-                    {
-                        label: '家电',
-                        data: [234, 278, 270, 190, 230],
-                        borderColor: Colors[5]
-                    },
-                    {
-                        label: '百货',
-                        data: [164, 178, 150, 135, 160],
-                        borderColor: Colors[6]
-                    },
-                    {
-                        label: '食品',
-                        data: [74, 118, 200, 235, 90],
-                        borderColor: Colors[7]
-                    },
-                ],
-            },
-            options: {
-                plugins: {
-                    title: {
-                        display: true,
-                        text: '最近几个月各品类销售趋势图',
-                        font: {
-                            size: 16
-                        }
-                    }
-                }
-            },
-        }
-        return {
-            username,
-            chart1,
-            chart2,
-            todoList,
-            role,
-        }
+    {
+        title: '今天要修复100个bug',
+        status: false,
     },
-}
+    {
+        title: '今天要写100行代码加几个bug吧',
+        status: false,
+    },
+    {
+        title: '今天要修复100个bug',
+        status: false,
+    },
+    {
+        title: '今天要修复100个bug',
+        status: true,
+    },
+    {
+        title: '今天要写100行代码加几个bug吧',
+        status: true,
+    },
+]);
+
+const chart1 = {
+    type: 'bar',
+    data: {
+        labels: ['周一', '周二', '周三', '周四', '周五'],
+        datasets: [
+            {
+                label: '家电',
+                data: [234, 278, 270, 190, 230],
+                backgroundColor: Colors[0],
+            },
+            {
+                label: '百货',
+                data: [164, 178, 190, 135, 160],
+                backgroundColor: Colors[1],
+            },
+            {
+                label: '食品',
+                data: [144, 198, 150, 235, 120],
+                backgroundColor: Colors[2],
+            },
+        ],
+    },
+    options: {
+        plugins: {
+            title: {
+                display: true,
+                text: '最近一周各品类销售图',
+                font: {
+                    size: 16,
+                },
+            },
+        },
+    },
+};
+
+const chart2 = {
+    type: 'line',
+    data: {
+        labels: ['6月', '7月', '8月', '9月', '10月'],
+        datasets: [
+            {
+                label: '家电',
+                data: [234, 278, 270, 190, 230],
+                borderColor: Colors[5],
+            },
+            {
+                label: '百货',
+                data: [164, 178, 150, 135, 160],
+                borderColor: Colors[6],
+            },
+            {
+                label: '食品',
+                data: [74, 118, 200, 235, 90],
+                borderColor: Colors[7],
+            },
+        ],
+    },
+    options: {
+        plugins: {
+            title: {
+                display: true,
+                text: '最近几个月各品类销售趋势图',
+                font: {
+                    size: 16,
+                },
+            },
+        },
+    },
+};
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .el-row {
     margin-bottom: 20px;
 }
