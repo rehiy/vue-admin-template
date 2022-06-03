@@ -48,6 +48,10 @@
             </el-col>
         </el-row>
         <el-dialog v-model="dialogVisible" title="裁剪图片" width="600px">
+            <div class="plugins-tips">
+                vue-cropperjs：一个封装了 cropperjs 的 Vue 组件。项目地址：
+                <a href="https://github.com/Agontuk/vue-cropperjs" target="_blank">vue-cropperjs</a>
+            </div>
             <vue-cropper
                 ref="cropper"
                 :src="imgSrc"
@@ -71,18 +75,23 @@
 
 <script lang="ts" setup>
 import { reactive, ref } from 'vue';
+
 import VueCropper from 'vue-cropperjs';
 import 'cropperjs/dist/cropper.css';
 
-import avatar from '@/assets/img/logo-min.png';
+import avatar from '@/assets/img/avatar.jpg';
 
 const username = localStorage.getItem('vt_username');
+
 const form = reactive({
     old: '',
     new: '',
     desc: '不可能！我的代码怎么可能会有bug！',
 });
-const onSubmit = () => {};
+
+const onSubmit = () => {
+    console.log('submited');
+};
 
 const avatarImg = ref(avatar);
 const imgSrc = ref('');
