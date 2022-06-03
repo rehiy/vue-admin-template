@@ -108,12 +108,12 @@
         <el-row :gutter="20">
             <el-col :span="12">
                 <el-card shadow="hover">
-                    <bar :chart-data="chart1.data" :chart-options="chart1.options" />
+                    <Bar :chart-data="chart1.data" :chart-options="chart1.options" />
                 </el-card>
             </el-col>
             <el-col :span="12">
                 <el-card shadow="hover">
-                    <line :chart-data="chart2.data" :chart-options="chart2.options" />
+                    <Line :chart-data="chart2.data" :chart-options="chart2.options" />
                 </el-card>
             </el-col>
         </el-row>
@@ -123,7 +123,8 @@
 <script lang="ts" setup>
 import { reactive } from 'vue';
 
-import { Bar, Line, Colors } from '@/helper/chartjs';
+import { Bar, Line } from 'vue-chartjs';
+import { Colors } from '@/helper/chartjs';
 
 const username = localStorage.getItem('vt_username');
 const role = username === 'admin' ? '超级管理员' : '普通用户';

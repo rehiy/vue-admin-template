@@ -13,26 +13,27 @@
         <div class="container">
             <div class="chart-box">
                 <div class="content-title">柱状图</div>
-                <bar :chart-data="chart1.data" :chart-options="chart1.options" />
+                <Bar :chart-data="chart1.data" :chart-options="chart1.options" />
             </div>
             <div class="chart-box">
                 <div class="content-title">折线图</div>
-                <line :chart-data="chart2.data" :chart-options="chart2.options" />
+                <Line :chart-data="chart2.data" :chart-options="chart2.options" />
             </div>
             <div class="chart-box">
                 <div class="content-title">饼状图</div>
-                <pie :chart-data="chart3.data" :chart-options="chart3.options" />
+                <Pie :chart-data="chart3.data" :chart-options="chart3.options" />
             </div>
             <div class="chart-box">
                 <div class="content-title">环形图</div>
-                <doughnut :chart-data="chart4.data" :chart-options="chart4.options" />
+                <Doughnut :chart-data="chart4.data" :chart-options="chart4.options" />
             </div>
         </div>
     </div>
 </template>
 
 <script lang="ts" setup>
-import { Bar, Line, Pie, Doughnut, Colors } from '@/helper/chartjs';
+import { Bar, Line, Pie, Doughnut } from 'vue-chartjs';
+import { Colors } from '@/helper/chartjs';
 
 const chart1 = {
     type: 'bar',
