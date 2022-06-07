@@ -6,7 +6,7 @@
                 <Expand v-else />
             </el-icon>
         </div>
-        <div class="logo">Vue Admin Template</div>
+        <div class="logo">Vue Admin</div>
         <div class="header-right">
             <div class="header-user-con">
                 <!-- 消息中心 -->

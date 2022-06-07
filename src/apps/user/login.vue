@@ -1,7 +1,7 @@
 <template>
     <div class="login-wrap">
         <div class="vt-login">
-            <div class="vt-title">Vue Admin Template</div>
+            <div class="vt-title">Vue Admin</div>
             <el-form ref="login" :model="param" :rules="rules" label-width="0px" class="vt-content">
                 <el-form-item prop="username">
                     <el-input v-model="param.username" placeholder="用户名">
