@@ -59,12 +59,12 @@ const items = [
     },
     {
         icon: 'CopyDocument',
-        index: '/tabs',
+        index: '/tabpane/sample',
         title: '选项卡',
     },
     {
         icon: 'Histogram',
-        index: '/table',
+        index: '/table/sample',
         title: '基础表格',
     },
     {
@@ -73,11 +73,11 @@ const items = [
         title: '表单相关',
         subs: [
             {
-                index: '/form',
+                index: '/form/sample',
                 title: '基本表单',
             },
             {
-                index: '/upload',
+                index: '/form/upload',
                 title: '文件上传',
             },
             {
@@ -85,7 +85,7 @@ const items = [
                 title: '三级菜单',
                 subs: [
                     {
-                        index: '/editor',
+                        index: '/editor/wangeditor',
                         title: '富文本编辑器',
                     },
                 ],
@@ -94,7 +94,7 @@ const items = [
     },
     {
         icon: 'PieChart',
-        index: '/charts',
+        index: '/charts/sample',
         title: '图表组件',
     },
     {
@@ -108,15 +108,15 @@ const items = [
         title: '错误处理',
         subs: [
             {
-                index: '/403',
+                index: '/error/403',
                 title: '403页面',
             },
             {
-                index: '/404',
+                index: '/error/404',
                 title: '404页面',
             },
             {
-                index: '/permission',
+                index: '/user/super',
                 title: '权限测试',
             },
         ],

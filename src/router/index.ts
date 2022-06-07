@@ -1,8 +1,8 @@
-import { createRouter, createWebHashHistory } from 'vue-router';
+import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 
-import vHome from '@/apps/home/index.vue';
+import layout from '@/apps/layout/index.vue';
 
-const routes = [
+const routes: RouteRecordRaw[] = [
     {
         path: '/',
         redirect: '/dashboard',
@@ -10,114 +10,126 @@ const routes = [
     {
         path: '/',
         name: 'home',
-        component: vHome,
+        component: layout,
         children: [
             {
-                path: '/403',
-                name: '403',
+                path: '/charts/sample',
+                name: 'charts-sample',
                 meta: {
-                    title: '没有权限',
+                    title: '基础图表',
+                    login: true,
                 },
-                component: () => import('@/apps/error/403.vue'),
-            },
-            {
-                path: '/404',
-                name: '404',
-                meta: {
-                    title: '找不到页面',
-                },
-                component: () => import('@/apps/error/404.vue'),
-            },
-            {
-                path: '/charts',
-                name: 'basecharts',
-                meta: {
-                    title: '图表',
-                },
-                component: () => import('@/apps/basecharts.vue'),
-            },
-            {
-                path: '/form',
-                name: 'baseform',
-                meta: {
-                    title: '表单',
-                },
-                component: () => import('@/apps/baseform.vue'),
-            },
-            {
-                path: '/table',
-                name: 'basetable',
-                meta: {
-                    title: '表格',
-                },
-                component: () => import('@/apps/basetable.vue'),
+                component: () => import('@/apps/charts/sample.vue'),
             },
             {
                 path: '/dashboard',
                 name: 'dashboard',
                 meta: {
                     title: '系统首页',
+                    login: true,
                 },
-                component: () => import('@/apps/dashboard.vue'),
+                component: () => import('@/apps/dashboard/index.vue'),
             },
             {
-                path: '/editor',
-                name: 'editor',
+                path: '/editor/wangeditor',
+                name: 'wangeditor',
                 meta: {
                     title: '富文本编辑器',
+                    login: true,
                 },
-                component: () => import('@/apps/editor.vue'),
+                component: () => import('@/apps/editor/wangeditor.vue'),
+            },
+            {
+                path: '/error/403',
+                name: 'error-403',
+                meta: {
+                    title: '访问被禁止',
+                    login: true,
+                },
+                component: () => import('@/apps/error/403.vue'),
+            },
+            {
+                path: '/error/404',
+                name: 'error-404',
+                meta: {
+                    title: '找不到页面',
+                    login: true,
+                },
+                component: () => import('@/apps/error/404.vue'),
+            },
+            {
+                path: '/form/sample',
+                name: 'form-sample',
+                meta: {
+                    title: '基础表单',
+                    login: true,
+                },
+                component: () => import('@/apps/form/sample.vue'),
+            },
+            {
+                path: '/form/upload',
+                name: 'form-upload',
+                meta: {
+                    title: '上传表单',
+                    login: true,
+                },
+                component: () => import('@/apps/form/upload.vue'),
             },
             {
                 path: '/i18n',
                 name: 'i18n',
                 meta: {
                     title: '国际化',
+                    login: true,
                 },
-                component: () => import('@/apps/i18n.vue'),
+                component: () => import('@/apps/i18n/index.vue'),
             },
             {
-                path: '/permission',
-                name: 'permission',
+                path: '/table/sample',
+                name: 'table-sample',
                 meta: {
-                    title: '权限管理',
-                    permission: true,
+                    title: '基础表格',
+                    login: true,
                 },
-                component: () => import('@/apps/permission.vue'),
+                component: () => import('@/apps/table/sample.vue'),
             },
             {
-                path: '/upload',
-                name: 'upload',
-                meta: {
-                    title: '上传插件',
-                },
-                component: () => import('@/apps/upload.vue'),
-            },
-            {
-                path: '/user',
-                name: 'user',
-                meta: {
-                    title: '个人中心',
-                },
-                component: () => import('@/apps/user.vue'),
-            },
-            {
-                path: '/tabs',
-                name: 'tabs',
+                path: '/tabpane/sample',
+                name: 'tabpane-sample',
                 meta: {
                     title: '选项卡',
+                    login: true,
                 },
-                component: () => import('@/apps/tabs.vue'),
+                component: () => import('@/apps/tabpane/sample.vue'),
+            },
+            {
+                path: '/user/info',
+                name: 'user-info',
+                meta: {
+                    title: '个人中心',
+                    login: true,
+                },
+                component: () => import('@/apps/user/info.vue'),
+            },
+            {
+                path: '/user/super',
+                name: 'user-super',
+                meta: {
+                    title: '超管访问',
+                    login: true,
+                    super: true,
+                },
+                component: () => import('@/apps/user/super.vue'),
             },
         ],
     },
     {
-        path: '/login',
-        name: 'login',
+        path: '/user/login',
+        name: 'user-login',
         meta: {
             title: '登录',
         },
-        component: () => import('@/apps/login.vue'),
+        component: () => import('@/apps/user/login.vue'),
     },
 ];
 
@@ -129,14 +141,21 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
     document.title = `${to.meta.title} - Vue Admin`;
     const username = localStorage.getItem('vt_username');
-    if (!username && to.path !== '/login') {
-        next('/login');
-    } else if (to.meta.permission) {
-        // 如果是管理员权限则可进入，这里只是简单的模拟管理员权限而已
-        username === 'admin' ? next() : next('/403');
-    } else {
-        next();
+
+    // 需要登录才能访问
+    if (to.meta.login && !username) {
+        next('/user/login');
+        return;
     }
+
+    // 需要超管才能访问
+    if (to.meta.login && username !== 'admin') {
+        next('/error/403');
+        return;
+    }
+
+    // 普通访问
+    next();
 });
 
 export default router;

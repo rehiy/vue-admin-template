@@ -12,7 +12,7 @@
                 <!-- 消息中心 -->
                 <div class="btn-bell">
                     <el-tooltip effect="dark" :content="message ? `有 ${message} 条未读消息` : `消息中心`" placement="bottom">
-                        <router-link to="/tabs">
+                        <router-link to="/tabpane/sample">
                             <el-icon :size="30">
                                 <Bell />
                             </el-icon>
@@ -50,12 +50,13 @@
 <script lang="ts" setup>
 import { computed, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
+
 import useStore from '@/store/main';
+
+const store = useStore();
 
 const username = localStorage.getItem('vt_username');
 const message = 2;
-
-const store = useStore();
 
 // 侧边栏折叠
 const collapse = computed(() => store.collapse);
@@ -63,8 +64,9 @@ const collapseChage = () => {
     store.handleCollapse(!collapse.value);
 };
 
+// 小屏自动折叠
 onMounted(() => {
-    if (document.body.clientWidth < 1200) {
+    if (document.body.clientWidth < 1000) {
         collapseChage();
     }
 });
@@ -74,9 +76,9 @@ const router = useRouter();
 const handleCommand = command => {
     if (command == 'loginout') {
         localStorage.removeItem('vt_username');
-        router.push('/login');
+        router.push('/user/login');
     } else if (command == 'user') {
-        router.push('/user');
+        router.push('/user/info');
     }
 };
 </script>

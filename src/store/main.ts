@@ -5,12 +5,17 @@ export default defineStore({
 
     state() {
         return {
-            tabsList: [],
             collapse: false,
+            tabsList: [],
         };
     },
 
     actions: {
+        // 侧边栏折叠
+        handleCollapse(data) {
+            this.collapse = data;
+        },
+        // 多窗口操作
         setTabsItem(data) {
             this.tabsList.push(data);
         },
@@ -23,7 +28,7 @@ export default defineStore({
         closeTabsOther(data) {
             this.tabsList = data;
         },
-        closeCurrentTag(data) {
+        closeCurrentTab(data) {
             for (let i = 0, len = this.tabsList.length; i < len; i++) {
                 const item = this.tabsList[i];
                 if (item.path === data.$route.fullPath) {
@@ -38,10 +43,6 @@ export default defineStore({
                     break;
                 }
             }
-        },
-        // 侧边栏折叠
-        handleCollapse(data) {
-            this.collapse = data;
         },
     },
 });

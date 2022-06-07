@@ -4,7 +4,7 @@
             <div class="vt-title">Vue Admin Template</div>
             <el-form ref="login" :model="param" :rules="rules" label-width="0px" class="vt-content">
                 <el-form-item prop="username">
-                    <el-input v-model="param.username" placeholder="username">
+                    <el-input v-model="param.username" placeholder="用户名">
                         <template #prepend>
                             <el-button>
                                 <el-icon>
@@ -15,7 +15,7 @@
                     </el-input>
                 </el-form-item>
                 <el-form-item prop="password">
-                    <el-input v-model="param.password" type="password" placeholder="password" @keyup.enter="submitForm()">
+                    <el-input v-model="param.password" type="password" placeholder="密码" @keyup.enter="submitForm()">
                         <template #prepend>
                             <el-button>
                                 <el-icon>
@@ -37,14 +37,15 @@
 import { ref, reactive } from 'vue';
 import { useRouter } from 'vue-router';
 import { ElMessage } from 'element-plus';
+
 import useStore from '@/store/main';
 
 const store = useStore();
 const router = useRouter();
 
 const param = reactive({
-    username: 'admin',
-    password: '123456',
+    username: import.meta.env.VITE_USERNAME || '',
+    password: import.meta.env.VITE_PASSWORD || '',
 });
 
 const rules = {
@@ -61,13 +62,12 @@ const submitForm = () => {
             localStorage.setItem('vt_username', param.username);
             router.push('/');
         } else {
-            ElMessage.error('登录成功');
-            return false;
+            ElMessage.error('登录失败');
         }
     });
 };
 
-store.clearTags();
+store.clearTabs();
 </script>
 
 <style lang="scss" scoped>
