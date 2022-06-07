@@ -1,15 +1,12 @@
 import { defineStore } from 'pinia';
 
-export default defineStore({
-    id: 'main',
-
+export default defineStore('layout', {
     state() {
         return {
             collapse: false,
             tabsList: [],
         };
     },
-
     actions: {
         // 侧边栏折叠
         handleCollapse(data) {
