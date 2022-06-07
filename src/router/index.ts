@@ -149,7 +149,7 @@ router.beforeEach((to, from, next) => {
     }
 
     // 需要超管才能访问
-    if (to.meta.login && username !== 'admin') {
+    if (to.meta.super && username !== 'admin') {
         next('/error/403');
         return;
     }
