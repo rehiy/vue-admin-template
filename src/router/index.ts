@@ -131,6 +131,15 @@ const routes: RouteRecordRaw[] = [
         },
         component: () => import('@/apps/user/login.vue'),
     },
+    {
+        path: '/:catchAll(.*)',
+        name: 'NotFound',
+        meta: {
+            title: '找不到页面',
+            login: true,
+        },
+        component: () => import('@/apps/error/404.vue'),
+    },
 ];
 
 const router = createRouter({
