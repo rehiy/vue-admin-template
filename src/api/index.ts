@@ -1,9 +1,5 @@
-import request from '@/helper/request';
+import { LocalApi } from './local';
 
-export const fetchData = query => {
-    return request({
-        url: './table.json',
-        method: 'get',
-        params: query,
-    });
+export default {
+    local: new LocalApi(),
 };

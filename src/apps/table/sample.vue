@@ -93,7 +93,7 @@
 import { ref, reactive } from 'vue';
 import { ElMessage, ElMessageBox } from 'element-plus';
 
-import { fetchData } from '@/api/index';
+import Api from '@/api/index';
 
 const query = reactive({
     address: '',
@@ -101,16 +101,18 @@ const query = reactive({
     pageIndex: 1,
     pageSize: 10,
 });
+
 const tableData = ref([]);
 const pageTotal = ref(0);
 
 // 获取表格数据
 const getData = () => {
-    fetchData(query).then(res => {
+    Api.local.getTable(query).then(res => {
         tableData.value = res.list;
         pageTotal.value = res.pageTotal || 50;
     });
 };
+
 getData();
 
 // 查询操作
@@ -138,11 +140,14 @@ const handleDelete = index => {
 
 // 表格编辑时弹窗和保存
 const editVisible = ref(false);
+
 let form = reactive({
     name: '',
     address: '',
 });
+
 let idx = -1;
+
 const handleEdit = (index, row) => {
     idx = index;
     Object.keys(form).forEach(item => {
@@ -150,6 +155,7 @@ const handleEdit = (index, row) => {
     });
     editVisible.value = true;
 };
+
 const saveEdit = () => {
     editVisible.value = false;
     ElMessage.success(`修改第 ${idx + 1} 行成功`);

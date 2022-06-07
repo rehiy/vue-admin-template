@@ -13,6 +13,5 @@ export default (app: App<Element>) => {
             en,
         },
     });
-
-    return app.use(i18n);
+    app.use(i18n);
 };

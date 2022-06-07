@@ -108,12 +108,12 @@
         <el-row :gutter="20">
             <el-col :span="12">
                 <el-card shadow="hover">
-                    <Bar :chart-data="chart1.data" :chart-options="chart1.options" />
+                    <v-chart :option="chart1" style="height: 400px" />
                 </el-card>
             </el-col>
             <el-col :span="12">
                 <el-card shadow="hover">
-                    <Line :chart-data="chart2.data" :chart-options="chart2.options" />
+                    <v-chart :option="chart2" style="height: 400px" />
                 </el-card>
             </el-col>
         </el-row>
@@ -123,107 +123,25 @@
 <script lang="ts" setup>
 import { reactive } from 'vue';
 
-import { Bar, Line } from 'vue-chartjs';
-import { Colors } from '@/helper/chartjs';
+import Api from '@/api/index';
 
 const username = localStorage.getItem('vt_username');
 const role = username === 'admin' ? '超级管理员' : '普通用户';
-const todoList = reactive([
-    {
-        title: '今天要修复100个bug',
-        status: false,
-    },
-    {
-        title: '今天要修复100个bug',
-        status: false,
-    },
-    {
-        title: '今天要写100行代码加几个bug吧',
-        status: false,
-    },
-    {
-        title: '今天要修复100个bug',
-        status: false,
-    },
-    {
-        title: '今天要修复100个bug',
-        status: true,
-    },
-    {
-        title: '今天要写100行代码加几个bug吧',
-        status: true,
-    },
-]);
 
-const chart1 = {
-    type: 'bar',
-    data: {
-        labels: ['周一', '周二', '周三', '周四', '周五'],
-        datasets: [
-            {
-                label: '家电',
-                data: [234, 278, 270, 190, 230],
-                backgroundColor: Colors[0],
-            },
-            {
-                label: '百货',
-                data: [164, 178, 190, 135, 160],
-                backgroundColor: Colors[1],
-            },
-            {
-                label: '食品',
-                data: [144, 198, 150, 235, 120],
-                backgroundColor: Colors[2],
-            },
-        ],
-    },
-    options: {
-        plugins: {
-            title: {
-                display: true,
-                text: '最近一周各品类销售图',
-                font: {
-                    size: 16,
-                },
-            },
-        },
-    },
-};
+const todoList = reactive([]);
+Api.local.getTodolist().then(data => {
+    todoList.push(...data);
+});
 
-const chart2 = {
-    type: 'line',
-    data: {
-        labels: ['6月', '7月', '8月', '9月', '10月'],
-        datasets: [
-            {
-                label: '家电',
-                data: [234, 278, 270, 190, 230],
-                borderColor: Colors[5],
-            },
-            {
-                label: '百货',
-                data: [164, 178, 150, 135, 160],
-                borderColor: Colors[6],
-            },
-            {
-                label: '食品',
-                data: [74, 118, 200, 235, 90],
-                borderColor: Colors[7],
-            },
-        ],
-    },
-    options: {
-        plugins: {
-            title: {
-                display: true,
-                text: '最近几个月各品类销售趋势图',
-                font: {
-                    size: 16,
-                },
-            },
-        },
-    },
-};
+const chart1 = reactive({});
+Api.local.getChart3().then(data => {
+    Object.assign(chart1, data);
+});
+
+const chart2 = reactive({});
+Api.local.getChart4().then(data => {
+    Object.assign(chart2, data);
+});
 </script>
 
 <style lang="scss" scoped>
