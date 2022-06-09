@@ -1,7 +1,9 @@
-// https://github.com/ecomfe/vue-echarts
-// https://echarts.apache.org/examples/zh/index.html
+/**
+ * 图表组件
+ * https://github.com/ecomfe/vue-echarts
+ * https://echarts.apache.org/examples/zh/index.html
+ */
 
-import { App } from 'vue';
 import VChart from 'vue-echarts';
 
 import { use } from 'echarts/core';
@@ -26,6 +28,6 @@ use([
     CanvasRenderer,
 ]);
 
-export default (app: App<Element>) => {
+export default (app: any) => {
     app.component('VChart', VChart);
 };

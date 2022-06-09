@@ -1,6 +1,6 @@
 <template>
     <div class="header">
-        <div class="collapse-btn" @click="collapseChage">
+        <div class="collapse-btn" @click="collapseChange">
             <el-icon :size="30">
                 <Fold v-if="!collapse" />
                 <Expand v-else />
@@ -51,23 +51,23 @@
 import { computed, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 
-import useStore from '@/store/layout';
+import layoutStore from '@/store/layout';
 
-const store = useStore();
+const layout = layoutStore();
 
 const username = localStorage.getItem('vt_username');
 const message = 2;
 
 // 侧边栏折叠
-const collapse = computed(() => store.collapse);
-const collapseChage = () => {
-    store.handleCollapse(!collapse.value);
+const collapse = computed(() => layout.collapse);
+const collapseChange = () => {
+    layout.setCollapse(!collapse.value);
 };
 
 // 小屏自动折叠
 onMounted(() => {
     if (document.body.clientWidth < 1000) {
-        collapseChage();
+        collapseChange();
     }
 });
 

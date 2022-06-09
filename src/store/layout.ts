@@ -9,7 +9,7 @@ export default defineStore('layout', {
     },
     actions: {
         // 侧边栏折叠
-        handleCollapse(data) {
+        setCollapse(data: boolean) {
             this.collapse = data;
         },
         // 多窗口操作
