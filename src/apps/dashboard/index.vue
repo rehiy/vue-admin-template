@@ -15,7 +15,7 @@
                 </el-card>
                 <el-card shadow="hover" style="height: 252px">
                     <template #header>
-                        <div class="clearfix">
+                        <div class="card-header">
                             <span>语言详情</span>
                         </div>
                     </template>
@@ -73,7 +73,7 @@
                 </el-row>
                 <el-card shadow="hover" style="height: 403px">
                     <template #header>
-                        <div class="clearfix">
+                        <div class="card-header">
                             <span>待办事项</span>
                             <el-button style="float: right; padding: 3px 10px 0" link>添加</el-button>
                         </div>
