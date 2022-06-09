@@ -25,7 +25,7 @@
                     <img src="@/assets/img/avatar.jpg" />
                 </div>
                 <!-- 用户名下拉菜单 -->
-                <el-dropdown class="user-name" trigger="click" @command="handleCommand">
+                <el-dropdown class="user-name" trigger="click" @command="userDropdown">
                     <span class="el-dropdown-link">
                         &nbsp;{{ username }}&nbsp;
                         <el-icon>
@@ -54,6 +54,7 @@ import { useRouter } from 'vue-router';
 import layoutStore from '@/store/layout';
 import sessionStore from '@/store/session';
 
+const router = useRouter();
 const layout = layoutStore();
 const session = sessionStore();
 
@@ -74,8 +75,7 @@ onMounted(() => {
 });
 
 // 用户名下拉菜单选择事件
-const router = useRouter();
-const handleCommand = command => {
+const userDropdown = command => {
     if (command == 'loginout') {
         session.username = '';
         router.push('/user/login');
