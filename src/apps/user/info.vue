@@ -79,9 +79,13 @@ import { reactive, ref } from 'vue';
 import VueCropper from 'vue-cropperjs';
 import 'cropperjs/dist/cropper.css';
 
+import sessionStore from '@/store/session';
+
 import avatar from '@/assets/img/avatar.jpg';
 
-const username = localStorage.getItem('vt_username');
+const session = sessionStore();
+
+const username = session.username;
 
 const form = reactive({
     old: '',

@@ -1,5 +1,7 @@
 import { createRouter, createWebHashHistory } from 'vue-router';
 
+import sessionStore from '@/store/session';
+
 import { routes } from './routes';
 
 const router = createRouter({
@@ -10,7 +12,7 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
     document.title = `${to.meta.title} - Vue Admin`;
 
-    const username = localStorage.getItem('vt_username');
+    const username = sessionStore().username;
 
     // 需要登录才能访问
     if (to.meta.login && !username) {

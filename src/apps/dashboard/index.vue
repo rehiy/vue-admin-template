@@ -124,8 +124,11 @@
 import { reactive } from 'vue';
 
 import Api from '@/api/index';
+import sessionStore from '@/store/session';
 
-const username = localStorage.getItem('vt_username');
+const session = sessionStore();
+
+const username = session.username;
 const role = username === 'admin' ? '超级管理员' : '普通用户';
 
 const todoList = reactive([]);

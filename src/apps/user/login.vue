@@ -39,9 +39,11 @@ import { useRouter } from 'vue-router';
 import { ElMessage } from 'element-plus';
 
 import layoutStore from '@/store/layout';
+import sessionStore from '@/store/session';
 
 const router = useRouter();
 const layout = layoutStore();
+const session = sessionStore();
 
 const param = reactive({
     username: import.meta.env.VITE_USERNAME || '',
@@ -59,7 +61,7 @@ const submitForm = () => {
     login.value.validate(valid => {
         if (valid) {
             ElMessage.success('登录成功');
-            localStorage.setItem('vt_username', param.username);
+            session.username = param.username;
             router.push('/');
         } else {
             ElMessage.error('登录失败');

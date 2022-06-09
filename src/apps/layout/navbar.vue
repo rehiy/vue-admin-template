@@ -52,10 +52,12 @@ import { computed, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 
 import layoutStore from '@/store/layout';
+import sessionStore from '@/store/session';
 
 const layout = layoutStore();
+const session = sessionStore();
 
-const username = localStorage.getItem('vt_username');
+const username = session.username;
 const message = 2;
 
 // 侧边栏折叠
@@ -75,7 +77,7 @@ onMounted(() => {
 const router = useRouter();
 const handleCommand = command => {
     if (command == 'loginout') {
-        localStorage.removeItem('vt_username');
+        session.username = '';
         router.push('/user/login');
     } else if (command == 'user') {
         router.push('/user/info');
