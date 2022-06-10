@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia';
 
-export default defineStore('session', {
+const sessionStore = defineStore('session', {
     state() {
         return {
             token: '',
@@ -17,3 +17,7 @@ export default defineStore('session', {
         ],
     },
 });
+
+export default sessionStore;
+
+export type SessionStore = typeof sessionStore;
