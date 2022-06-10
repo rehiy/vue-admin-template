@@ -17,9 +17,7 @@
                     <el-option key="2" label="湖南省" value="湖南省"></el-option>
                 </el-select>
                 <el-input v-model="query.name" placeholder="用户名" class="handle-input mr10"></el-input>
-                <el-button type="primary" @click="handleSearch">
-                    <el-icon> <Search /> </el-icon>搜索
-                </el-button>
+                <el-button type="primary" icon="Search" @click="handleSearch">搜索</el-button>
             </div>
             <el-table ref="multipleTable" :data="tableData" border class="table" header-cell-class-name="table-header">
                 <el-table-column prop="id" label="ID" width="55" align="center"></el-table-column>
@@ -43,18 +41,8 @@
                 <el-table-column prop="date" label="注册时间"></el-table-column>
                 <el-table-column label="操作" width="180" align="center">
                     <template #default="scope">
-                        <el-button link type="primary" @click="handleEdit(scope.$index, scope.row)">
-                            <el-icon>
-                                <Edit />
-                            </el-icon>
-                            编辑
-                        </el-button>
-                        <el-button link type="danger" @click="handleDelete(scope.$index, scope.row)">
-                            <el-icon>
-                                <Delete />
-                            </el-icon>
-                            删除
-                        </el-button>
+                        <el-button link type="primary" icon="Edit" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
+                        <el-button link type="danger" icon="Delete" @click="handleDelete(scope.$index, scope.row)">删除</el-button>
                     </template>
                 </el-table-column>
             </el-table>
