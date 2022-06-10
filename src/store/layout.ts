@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia';
 
-const layoutStore = defineStore('layout', {
+export default defineStore('layout', {
     state() {
         return {
             collapse: false,
@@ -27,7 +27,3 @@ const layoutStore = defineStore('layout', {
         },
     },
 });
-
-export default layoutStore;
-
-export type LayoutStore = typeof layoutStore;
