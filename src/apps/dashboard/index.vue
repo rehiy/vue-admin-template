@@ -184,7 +184,7 @@ Api.local.getChart4().then(data => {
         background: rgb(45, 140, 240);
     }
 
-    .grid-con-1 .grid-num {
+    .grid-num {
         color: rgb(45, 140, 240);
     }
 }
@@ -194,7 +194,7 @@ Api.local.getChart4().then(data => {
         background: rgb(100, 213, 114);
     }
 
-    .grid-con-2 .grid-num {
+    .grid-num {
         color: rgb(45, 140, 240);
     }
 }
@@ -204,7 +204,7 @@ Api.local.getChart4().then(data => {
         background: rgb(242, 94, 67);
     }
 
-    .grid-con-3 .grid-num {
+    .grid-num {
         color: rgb(242, 94, 67);
     }
 }

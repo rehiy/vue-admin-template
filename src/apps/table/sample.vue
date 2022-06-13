@@ -166,7 +166,7 @@ const saveEdit = () => {
     }
 
     .handle-input {
-        width: 300px;
+        width: auto;
         display: inline-block;
     }
 }
@@ -177,9 +177,9 @@ const saveEdit = () => {
 
     .table-td-thumb {
         display: block;
-        margin: auto;
         width: 40px;
         height: 40px;
+        margin: auto;
     }
 }
 
