@@ -6,7 +6,7 @@
         <div class="content">
             <router-view v-slot="{ Component }">
                 <transition name="move" mode="out-in">
-                    <keep-alive :include="tabsList">
+                    <keep-alive max="10">
                         <component :is="Component" />
                     </keep-alive>
                 </transition>
@@ -27,7 +27,6 @@ import vTabs from './tabs.vue';
 const layout = layoutStore();
 
 const collapse = computed(() => layout.collapse);
-const tabsList = computed(() => layout.tabsList.map(item => item.name));
 </script>
 
 <style lang="scss" scoped>
