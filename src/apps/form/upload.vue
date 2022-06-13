@@ -33,35 +33,3 @@
 </template>
 
 <script lang="ts" setup></script>
-
-<style lang="scss" scoped>
-.el-upload--text {
-    background-color: #fff;
-    border: 1px dashed #d9d9d9;
-    border-radius: 6px;
-    width: 360px;
-    height: 180px;
-    text-align: center;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-}
-
-.el-upload--text .el-icon-upload {
-    font-size: 67px;
-    color: #97a8be;
-    margin: 40px 0 16px;
-    line-height: 50px;
-}
-
-.el-upload--text {
-    color: #97a8be;
-    font-size: 14px;
-    text-align: center;
-}
-
-.el-upload--text em {
-    color: #20a0ff;
-    font-style: normal;
-}
-</style>

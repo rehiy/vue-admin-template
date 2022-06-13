@@ -78,15 +78,6 @@ layout.clearTabs();
     background-size: cover;
 }
 
-.vt-title {
-    width: 100%;
-    line-height: 50px;
-    text-align: center;
-    font-size: 20px;
-    color: #333;
-    border-bottom: 1px solid #ddd;
-}
-
 .vt-login {
     position: absolute;
     left: 50%;
@@ -96,19 +87,28 @@ layout.clearTabs();
     border-radius: 5px;
     background: rgba(255, 255, 255, 0.3);
     overflow: hidden;
-}
 
-.vt-content {
-    padding: 30px 30px;
-}
+    .vt-title {
+        width: 100%;
+        line-height: 50px;
+        text-align: center;
+        font-size: 20px;
+        color: #333;
+        border-bottom: 1px solid #ddd;
+    }
 
-.login-btn {
-    text-align: center;
-}
+    .vt-content {
+        padding: 30px 30px;
 
-.login-btn button {
-    width: 100%;
-    height: 36px;
-    margin-bottom: 10px;
+        .login-btn {
+            text-align: center;
+
+            button {
+                width: 100%;
+                height: 36px;
+                margin-bottom: 10px;
+            }
+        }
+    }
 }
 </style>

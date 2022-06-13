@@ -116,7 +116,7 @@ const setImage = e => {
     const reader = new FileReader();
     reader.onload = event => {
         dialogVisible.value = true;
-        imgSrc.value = event.target.result;
+        imgSrc.value = event.target.result as string;
         cropper.value && cropper.value.replace(event.target.result);
     };
     reader.readAsDataURL(file);
@@ -136,52 +136,52 @@ const saveAvatar = () => {
 .info {
     text-align: center;
     padding: 35px 0;
-}
 
-.info-image {
-    position: relative;
-    margin: auto;
-    width: 100px;
-    height: 100px;
-    background: #f8f8f8;
-    border: 1px solid #eee;
-    border-radius: 50px;
-    overflow: hidden;
-}
+    .info-name {
+        margin: 15px 0 10px;
+        font-size: 24px;
+        font-weight: 500;
+        color: #262626;
+    }
 
-.info-image img {
-    width: 100%;
-    height: 100%;
-}
+    .info-image {
+        position: relative;
+        margin: auto;
+        width: 100px;
+        height: 100px;
+        background: #f8f8f8;
+        border: 1px solid #eee;
+        border-radius: 50px;
+        overflow: hidden;
 
-.info-edit {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
+        & img {
+            width: 100%;
+            height: 100%;
+        }
 
-.info-edit i {
-    color: #eee;
-    font-size: 25px;
-}
+        &:hover .info-edit {
+            opacity: 1;
+        }
+    }
 
-.info-image:hover .info-edit {
-    opacity: 1;
-}
+    .info-edit {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        opacity: 0;
+        transition: opacity 0.3s ease;
 
-.info-name {
-    margin: 15px 0 10px;
-    font-size: 24px;
-    font-weight: 500;
-    color: #262626;
+        & i {
+            color: #eee;
+            font-size: 25px;
+        }
+    }
 }
 
 .crop-demo-btn {

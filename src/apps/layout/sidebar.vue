@@ -137,6 +137,10 @@ const items = [
     top: 70px;
     bottom: 0;
     overflow-y: scroll;
+
+    & > ul {
+        height: 100%;
+    }
 }
 
 .sidebar::-webkit-scrollbar {
@@ -145,9 +149,5 @@ const items = [
 
 .sidebar-el-menu:not(.el-menu--collapse) {
     width: 250px;
-}
-
-.sidebar > ul {
-    height: 100%;
 }
 </style>

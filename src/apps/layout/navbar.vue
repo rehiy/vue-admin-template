@@ -7,42 +7,40 @@
             </el-icon>
         </div>
         <div class="logo">Vue Admin</div>
-        <div class="header-right">
-            <div class="header-user-con">
-                <!-- 消息中心 -->
-                <div class="btn-bell">
-                    <el-tooltip effect="dark" :content="message ? `有 ${message} 条未读消息` : `消息中心`" placement="bottom">
-                        <router-link to="/tabpane/sample">
-                            <el-icon :size="30">
-                                <Bell />
-                            </el-icon>
-                        </router-link>
-                    </el-tooltip>
-                    <span v-if="message" class="btn-bell-badge"></span>
-                </div>
-                <!-- 用户头像 -->
-                <div class="user-avator">
-                    <img src="@/assets/img/avatar.jpg" />
-                </div>
-                <!-- 用户名下拉菜单 -->
-                <el-dropdown class="user-name" trigger="click" @command="userDropdown">
-                    <span class="el-dropdown-link">
-                        &nbsp;{{ username }}&nbsp;
-                        <el-icon>
-                            <CaretBottom />
-                        </el-icon>
-                    </span>
-                    <template #dropdown>
-                        <el-dropdown-menu>
-                            <a href="https://github.com/rehiy/vue-admin-template">
-                                <el-dropdown-item>项目仓库</el-dropdown-item>
-                            </a>
-                            <el-dropdown-item command="user">个人中心</el-dropdown-item>
-                            <el-dropdown-item divided command="loginout">退出登录</el-dropdown-item>
-                        </el-dropdown-menu>
-                    </template>
-                </el-dropdown>
+        <!-- 消息中心 -->
+        <div class="btn-bell">
+            <el-tooltip effect="dark" :content="message ? `有 ${message} 条未读消息` : `消息中心`" placement="bottom">
+                <router-link to="/tabpane/sample">
+                    <el-icon :size="30">
+                        <Bell />
+                    </el-icon>
+                </router-link>
+            </el-tooltip>
+            <span v-if="message" class="btn-bell-badge"></span>
+        </div>
+        <div class="header-user-con">
+            <!-- 用户头像 -->
+            <div class="user-avator">
+                <img src="@/assets/img/avatar.jpg" />
             </div>
+            <!-- 用户名下拉菜单 -->
+            <el-dropdown class="user-name" trigger="click" @command="userDropdown">
+                <span class="el-dropdown-link">
+                    &nbsp;{{ username }}&nbsp;
+                    <el-icon>
+                        <CaretBottom />
+                    </el-icon>
+                </span>
+                <template #dropdown>
+                    <el-dropdown-menu>
+                        <a href="https://github.com/rehiy/vue-admin-template">
+                            <el-dropdown-item>项目仓库</el-dropdown-item>
+                        </a>
+                        <el-dropdown-item command="user">个人中心</el-dropdown-item>
+                        <el-dropdown-item divided command="loginout">退出登录</el-dropdown-item>
+                    </el-dropdown-menu>
+                </template>
+            </el-dropdown>
         </div>
     </div>
 </template>
@@ -91,32 +89,22 @@ const userDropdown = command => {
     position: relative;
     width: 100%;
     height: 70px;
+    padding: 0 20px;
     font-size: 22px;
     background-color: #242f42;
     color: #fff;
-}
 
-.collapse-btn {
-    height: 28px;
-    padding: 0 20px;
-    background: rgb(40, 52, 70);
-    cursor: pointer;
-}
+    .collapse-btn {
+        height: 28px;
+        background: rgb(40, 52, 70);
+        cursor: pointer;
+    }
 
-.header .logo {
-    flex: auto;
-    width: 250px;
-}
-
-.header-right {
-    float: right;
-    padding-right: 50px;
-}
-
-.header-user-con {
-    display: flex;
-    height: 70px;
-    align-items: center;
+    .logo {
+        flex: auto;
+        width: 250px;
+        padding: 0 20px;
+    }
 }
 
 .btn-bell {
@@ -126,36 +114,42 @@ const userDropdown = command => {
     text-align: center;
     border-radius: 15px;
     cursor: pointer;
+
+    .btn-bell-badge {
+        position: absolute;
+        right: 0;
+        top: -2px;
+        width: 8px;
+        height: 8px;
+        border-radius: 4px;
+        background: #f56c6c;
+        color: #fff;
+    }
+
+    .el-icon {
+        color: #fff;
+    }
 }
 
-.btn-bell-badge {
-    position: absolute;
-    right: 0;
-    top: -2px;
-    width: 8px;
-    height: 8px;
-    border-radius: 4px;
-    background: #f56c6c;
-    color: #fff;
-}
+.header-user-con {
+    display: flex;
+    height: 70px;
+    align-items: center;
 
-.btn-bell .el-icon {
-    color: #fff;
-}
+    .user-name {
+        margin-left: 10px;
+    }
 
-.user-name {
-    margin-left: 10px;
-}
+    .user-avator {
+        margin-left: 20px;
+    }
 
-.user-avator {
-    margin-left: 20px;
-}
-
-.user-avator img {
-    display: block;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
+    .user-avator img {
+        display: block;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+    }
 }
 
 .el-dropdown-link {

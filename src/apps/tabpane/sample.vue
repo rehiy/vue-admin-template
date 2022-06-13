@@ -106,7 +106,6 @@ const state = reactive({
 
 const handleRead = index => {
     const item = state.unread.splice(index, 1);
-    console.log(item);
     state.read = item.concat(state.read);
 };
 const handleDel = index => {

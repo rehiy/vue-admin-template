@@ -166,10 +166,10 @@ const onReset = () => {
 <style lang="scss" scoped>
 .form-box {
     width: 600px;
-}
 
-.form-box .line {
-    text-align: center;
+    .line {
+        text-align: center;
+    }
 }
 
 .el-time-panel__content::after,

@@ -41,8 +41,8 @@
                 <el-table-column prop="date" label="注册时间"></el-table-column>
                 <el-table-column label="操作" width="180" align="center">
                     <template #default="scope">
-                        <el-button link type="primary" icon="Edit" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
-                        <el-button link type="danger" icon="Delete" @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+                        <el-button link type="primary" icon="Edit" @click="handleEdit(scope.$index, scope.row)">编辑 </el-button>
+                        <el-button link type="danger" icon="Delete" @click="handleDelete(scope.$index, scope.row)">删除 </el-button>
                     </template>
                 </el-table-column>
             </el-table>
@@ -154,37 +154,37 @@ const saveEdit = () => {
 </script>
 
 <style lang="scss" scoped>
+.mr10 {
+    margin-right: 10px;
+}
+
 .handle-box {
     margin-bottom: 20px;
-}
 
-.handle-select {
-    width: 120px;
-}
+    .handle-select {
+        width: 120px;
+    }
 
-.handle-input {
-    width: 300px;
-    display: inline-block;
+    .handle-input {
+        width: 300px;
+        display: inline-block;
+    }
 }
 
 .table {
     width: 100%;
     font-size: 14px;
-}
 
-.mr10 {
-    margin-right: 10px;
+    .table-td-thumb {
+        display: block;
+        margin: auto;
+        width: 40px;
+        height: 40px;
+    }
 }
 
 .pagination {
     margin: 20px 0;
     text-align: right;
-}
-
-.table-td-thumb {
-    display: block;
-    margin: auto;
-    width: 40px;
-    height: 40px;
 }
 </style>

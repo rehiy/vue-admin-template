@@ -1,6 +1,6 @@
 <template>
     <div>
-        <el-row :gutter="20">
+        <el-row :gutter="20" class="mgb20">
             <el-col :span="8">
                 <el-card shadow="hover" class="mgb20" style="height: 252px">
                     <div class="user-info">
@@ -105,7 +105,7 @@
                 </el-card>
             </el-col>
         </el-row>
-        <el-row :gutter="20">
+        <el-row :gutter="20" class="mgb20">
             <el-col :span="12">
                 <el-card shadow="hover">
                     <v-chart :option="chart1" style="height: 400px" />
@@ -148,7 +148,7 @@ Api.local.getChart4().then(data => {
 </script>
 
 <style lang="scss" scoped>
-.el-row {
+.mgb20 {
     margin-bottom: 20px;
 }
 
@@ -156,99 +156,101 @@ Api.local.getChart4().then(data => {
     display: flex;
     align-items: center;
     height: 100px;
+
+    .grid-con-icon {
+        font-size: 50px;
+        width: 100px;
+        height: 100px;
+        text-align: center;
+        line-height: 100px;
+        color: #fff;
+    }
+
+    .grid-cont-right {
+        flex: 1;
+        text-align: center;
+        font-size: 14px;
+        color: #999;
+    }
+
+    .grid-num {
+        font-size: 30px;
+        font-weight: bold;
+    }
 }
 
-.grid-cont-right {
-    flex: 1;
-    text-align: center;
-    font-size: 14px;
-    color: #999;
+.grid-con-1 {
+    .grid-con-icon {
+        background: rgb(45, 140, 240);
+    }
+
+    .grid-con-1 .grid-num {
+        color: rgb(45, 140, 240);
+    }
 }
 
-.grid-num {
-    font-size: 30px;
-    font-weight: bold;
+.grid-con-2 {
+    .grid-con-icon {
+        background: rgb(100, 213, 114);
+    }
+
+    .grid-con-2 .grid-num {
+        color: rgb(45, 140, 240);
+    }
 }
 
-.grid-con-icon {
-    font-size: 50px;
-    width: 100px;
-    height: 100px;
-    text-align: center;
-    line-height: 100px;
-    color: #fff;
-}
+.grid-con-3 {
+    .grid-con-icon {
+        background: rgb(242, 94, 67);
+    }
 
-.grid-con-1 .grid-con-icon {
-    background: rgb(45, 140, 240);
-}
-
-.grid-con-1 .grid-num {
-    color: rgb(45, 140, 240);
-}
-
-.grid-con-2 .grid-con-icon {
-    background: rgb(100, 213, 114);
-}
-
-.grid-con-2 .grid-num {
-    color: rgb(45, 140, 240);
-}
-
-.grid-con-3 .grid-con-icon {
-    background: rgb(242, 94, 67);
-}
-
-.grid-con-3 .grid-num {
-    color: rgb(242, 94, 67);
+    .grid-con-3 .grid-num {
+        color: rgb(242, 94, 67);
+    }
 }
 
 .user-info {
     display: flex;
     align-items: center;
+    margin-bottom: 20px;
     padding-bottom: 20px;
     border-bottom: 2px solid #ccc;
-    margin-bottom: 20px;
-}
 
-.user-avator {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-}
+    .user-avator {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+    }
 
-.user-info-cont {
-    padding-left: 50px;
-    flex: 1;
-    font-size: 14px;
-    color: #999;
-}
+    .user-info-cont {
+        flex: 1;
+        padding-left: 50px;
+        font-size: 14px;
+        color: #999;
 
-.user-info-cont div:first-child {
-    font-size: 30px;
-    color: #222;
+        div:first-child {
+            font-size: 30px;
+            color: #222;
+        }
+    }
 }
 
 .user-info-list {
+    line-height: 25px;
     font-size: 14px;
     color: #999;
-    line-height: 25px;
-}
 
-.user-info-list span {
-    margin-left: 70px;
-}
-
-.mgb20 {
-    margin-bottom: 20px;
+    span {
+        margin-left: 70px;
+    }
 }
 
 .todo-item {
     font-size: 14px;
-}
 
-.todo-item-del {
-    text-decoration: line-through;
-    color: #999;
+    &.todo-item-del {
+        text-decoration: line-through;
+        color: #999;
+    }
 }
 </style>

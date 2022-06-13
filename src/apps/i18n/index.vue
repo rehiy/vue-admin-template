@@ -28,9 +28,9 @@
 <style lang="scss" scoped>
 .list {
     padding: 30px 0;
-}
 
-.list p {
-    margin-bottom: 20px;
+    p {
+        margin-bottom: 20px;
+    }
 }
 </style>
