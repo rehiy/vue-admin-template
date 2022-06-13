@@ -1,6 +1,6 @@
 <template>
-    <div v-if="showTabs" class="tabs">
-        <el-button v-for="(item, index) in tabsList" :key="index" :type="isActive(item.path) ? 'primary' : ''">
+    <div v-if="layout.tabsList.length > 0" class="tabs">
+        <el-button v-for="(item, index) in layout.tabsList" :key="index" :type="isActive(item.path) ? 'primary' : ''">
             <router-link :to="item.path">{{ item.title }}</router-link>
             <el-icon class="el-icon--right" @click="closeTabs(index)">
                 <Close />
@@ -25,7 +25,6 @@
 </template>
 
 <script lang="ts" setup>
-import { computed } from 'vue';
 import { useRoute, useRouter, onBeforeRouteUpdate } from 'vue-router';
 
 import layoutStore from '@/store/layout';
@@ -38,16 +37,13 @@ const isActive = path => {
     return path === route.fullPath;
 };
 
-const tabsList = computed(() => layout.tabsList);
-const showTabs = computed(() => tabsList.value.length > 0);
-
 // 更新标签
 const updateTabs = route => {
-    const isExist = tabsList.value.some(item => {
+    const isExist = layout.tabsList.some(item => {
         return item.path === route.fullPath;
     });
     if (!isExist) {
-        if (tabsList.value.length >= 8) {
+        if (layout.tabsList.length >= 8) {
             layout.closeTabsItem({ index: 0 });
         }
         layout.openTabsItem({
@@ -63,9 +59,9 @@ onBeforeRouteUpdate(to => updateTabs(to));
 
 // 关闭单个标签
 const closeTabs = index => {
-    const last = tabsList.value[index];
+    const last = layout.tabsList[index];
     layout.closeTabsItem({ index }); // 不能换位置
-    const item = tabsList.value[index] ? tabsList.value[index] : tabsList.value[index - 1];
+    const item = layout.tabsList[index] ? layout.tabsList[index] : layout.tabsList[index - 1];
     if (item) {
         last.path === route.fullPath && router.push(item.path);
     } else {
@@ -75,7 +71,7 @@ const closeTabs = index => {
 
 // 关闭其他标签
 const closeOther = () => {
-    const cur = tabsList.value.filter(item => {
+    const cur = layout.tabsList.filter(item => {
         return item.path === route.fullPath;
     });
     layout.closeTabsOther(cur);

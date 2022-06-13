@@ -1,7 +1,7 @@
 <template>
     <v-navbar />
     <v-sidebar />
-    <div class="content-box" :class="{ 'content-collapse': collapse }">
+    <div class="content-box" :class="{ 'content-collapse': layout.collapse }">
         <v-tabs />
         <div class="content">
             <router-view v-slot="{ Component }">
@@ -16,8 +16,6 @@
 </template>
 
 <script lang="ts" setup>
-import { computed } from 'vue';
-
 import layoutStore from '@/store/layout';
 
 import vNavbar from './navbar.vue';
@@ -25,8 +23,6 @@ import vSidebar from './sidebar.vue';
 import vTabs from './tabs.vue';
 
 const layout = layoutStore();
-
-const collapse = computed(() => layout.collapse);
 </script>
 
 <style lang="scss" scoped>

@@ -2,7 +2,7 @@
     <div class="header">
         <div class="collapse-btn" @click="collapseChange">
             <el-icon :size="30">
-                <Fold v-if="!collapse" />
+                <Fold v-if="!layout.collapse" />
                 <Expand v-else />
             </el-icon>
         </div>
@@ -48,7 +48,7 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, onMounted } from 'vue';
+import { onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 
 import layoutStore from '@/store/layout';
@@ -62,9 +62,8 @@ const username = session.username;
 const message = 2;
 
 // 侧边栏折叠
-const collapse = computed(() => layout.collapse);
 const collapseChange = () => {
-    layout.setCollapse(!collapse.value);
+    layout.setCollapse(!layout.collapse);
 };
 
 // 小屏自动折叠
