@@ -1,5 +1,5 @@
 export class HttpClient {
-    protected async get(url: string, param?: Record<string | number, any>) {
+    protected async get(url: string, param?: unknown) {
         if (param) {
             url += '?' + this.buildQuery(param);
         }
@@ -10,7 +10,7 @@ export class HttpClient {
         return this.parseResponse(body);
     }
 
-    protected async post(url: string, param: Record<string | number, any>) {
+    protected async post(url: string, param: unknown) {
         const body = await fetch(url, {
             method: 'POST',
             headers: this.buildHeader('json'),
@@ -19,7 +19,7 @@ export class HttpClient {
         return this.parseResponse(body);
     }
 
-    protected async delete(url: string, param?: Record<string | number, any>) {
+    protected async delete(url: string, param?: unknown) {
         if (param) {
             url += '?' + this.buildQuery(param);
         }
@@ -44,7 +44,7 @@ export class HttpClient {
         return headers;
     }
 
-    protected buildQuery(obj: any, key?: string) {
+    protected buildQuery(obj: unknown, key?: string) {
         if (!obj && !key) {
             return '';
         }
@@ -53,17 +53,24 @@ export class HttpClient {
             return key + '=';
         }
 
-        if (typeof obj !== 'object') {
-            return key + '=' + encodeURIComponent(obj);
+        const result = [];
+
+        switch (typeof obj) {
+            case 'string':
+            case 'number':
+            case 'boolean':
+                result.push(key + '=' + encodeURIComponent(obj));
+                break;
+            case 'object':
+                for (const i in obj) {
+                    if (Object.prototype.hasOwnProperty.call(obj, i)) {
+                        const k = key ? key + '[' + i + ']' : i;
+                        result.push(this.buildQuery(obj[i], k));
+                    }
+                }
+                break;
         }
 
-        const result = [];
-        for (const i in obj) {
-            if (obj.hasOwnProperty(i)) {
-                const k = key ? key + '[' + i + ']' : i;
-                result.push(this.buildQuery(obj[i], k));
-            }
-        }
         return result.join('&');
     }
 }
