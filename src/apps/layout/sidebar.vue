@@ -56,7 +56,7 @@ const layout = layoutStore();
 
 const onRoutes = computed(() => route.path);
 
-const items = [
+const items: MenuItem[] = [
     {
         icon: 'HomeFilled',
         index: '/dashboard',
@@ -127,6 +127,13 @@ const items = [
         ],
     },
 ];
+
+interface MenuItem {
+    icon: string;
+    index: string;
+    title: string;
+    subs?: MenuItem[];
+}
 </script>
 
 <style lang="scss" scoped>
