@@ -116,16 +116,23 @@ const showDialog = () => {
     imgSrc.value = avatarImg.value;
 };
 
-const setImage = (e: Event) => {
-    const file = e.target.files[0];
+const setImage = (event: Event) => {
+    if(!event.target) {
+        return;
+    }
+    const file = event.target.files[0];
     if (!file.type.includes('image/')) {
         return;
     }
+
     const reader = new FileReader();
-    reader.onload = event => {
+    reader.onload = e => {
+        if(!e.target) {
+            return;
+        }
         dialogVisible.value = true;
-        imgSrc.value = '' + event.target.result;
-        cropper.value && cropper.value.replace(event.target.result);
+        imgSrc.value = '' + e.target.result;
+        cropper.value && cropper.value.replace(e.target.result);
     };
     reader.readAsDataURL(file);
 };

@@ -21,7 +21,7 @@
                     搜索
                 </el-button>
             </div>
-            <el-table ref="multipleTable" :data="tableData" border class="table" header-cell-class-name="table-header">
+            <el-table :data="tableData" border class="table" header-cell-class-name="table-header">
                 <el-table-column prop="id" label="ID" width="55" align="center" />
                 <el-table-column prop="name" label="用户名" />
                 <el-table-column label="账户余额">
@@ -84,6 +84,8 @@ import { ElMessage, ElMessageBox } from 'element-plus';
 
 import Api from '@/api/index';
 
+type IItem = Record<string, string>;
+
 const query = reactive({
     address: '',
     name: '',
@@ -92,7 +94,7 @@ const query = reactive({
 });
 
 const pageTotal = ref(0);
-const tableData = ref([]);
+const tableData = ref<IItem[]>([]);
 
 // 获取表格数据
 const getData = () => {
@@ -130,14 +132,11 @@ const handleDelete = (idx: number) => {
 // 表格编辑时弹窗和保存
 const editVisible = ref(false);
 
-const formModel = reactive({
-    name: '',
-    address: '',
-});
+const formModel = reactive<IItem>({});
 
 let index = -1;
 
-const handleEdit = (idx: number, row) => {
+const handleEdit = (idx: number, row: IItem) => {
     index = idx;
     Object.keys(formModel).forEach(item => {
         formModel[item] = row[item];
