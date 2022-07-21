@@ -48,31 +48,24 @@
                         <el-button link type="primary" icon="Edit" @click="handleEdit(scope.$index, scope.row)">
                             编辑
                         </el-button>
-                        <el-button link type="danger" icon="Delete" @click="handleDelete(scope.$index, scope.row)">
+                        <el-button link type="danger" icon="Delete" @click="handleDelete(scope.$index)">
                             删除
                         </el-button>
                     </template>
                 </el-table-column>
             </el-table>
             <div class="pagination">
-                <el-pagination
-                    background
-                    layout="total, prev, pager, next"
-                    :current-page="query.pageIndex"
-                    :page-size="query.pageSize"
-                    :total="pageTotal"
-                    @current-change="handlePageChange"
-                />
+                <el-pagination background layout="total, prev, pager, next" :current-page="query.pageIndex" :page-size="query.pageSize" :total="pageTotal" @current-change="handlePageChange" />
             </div>
         </div>
         <!-- 编辑弹出框 -->
         <el-dialog v-model="editVisible" title="编辑" width="30%">
             <el-form label-width="70px">
                 <el-form-item label="用户名">
-                    <el-input v-model="form.name" />
+                    <el-input v-model="formModel.name" />
                 </el-form-item>
                 <el-form-item label="地址">
-                    <el-input v-model="form.address" />
+                    <el-input v-model="formModel.address" />
                 </el-form-item>
             </el-form>
             <template #footer>
@@ -98,14 +91,14 @@ const query = reactive({
     pageSize: 10,
 });
 
-const tableData = ref([]);
 const pageTotal = ref(0);
+const tableData = ref([]);
 
 // 获取表格数据
 const getData = () => {
     Api.local.getTable(query).then(res => {
-        tableData.value = res.list;
         pageTotal.value = res.pageTotal || 50;
+        tableData.value = res.list;
     });
 };
 
@@ -118,45 +111,45 @@ const handleSearch = () => {
 };
 
 // 分页导航
-const handlePageChange = val => {
+const handlePageChange = (val: number) => {
     query.pageIndex = val;
     getData();
 };
 
 // 删除操作
-const handleDelete = index => {
+const handleDelete = (idx: number) => {
     // 二次确认删除
     ElMessageBox.confirm('确定要删除吗？', '提示', {
         type: 'warning',
     }).then(() => {
         ElMessage.success('删除成功');
-        tableData.value.splice(index, 1);
+        tableData.value.splice(idx, 1);
     });
 };
 
 // 表格编辑时弹窗和保存
 const editVisible = ref(false);
 
-const form = reactive({
+const formModel = reactive({
     name: '',
     address: '',
 });
 
-let idx = -1;
+let index = -1;
 
-const handleEdit = (index, row) => {
-    idx = index;
-    Object.keys(form).forEach(item => {
-        form[item] = row[item];
+const handleEdit = (idx: number, row) => {
+    index = idx;
+    Object.keys(formModel).forEach(item => {
+        formModel[item] = row[item];
     });
     editVisible.value = true;
 };
 
 const saveEdit = () => {
     editVisible.value = false;
-    ElMessage.success(`修改第 ${idx + 1} 行成功`);
-    Object.keys(form).forEach(item => {
-        tableData.value[idx][item] = form[item];
+    ElMessage.success(`修改第 ${index + 1} 行成功`);
+    Object.keys(formModel).forEach(item => {
+        tableData.value[index][item] = formModel[item];
     });
 };
 </script>

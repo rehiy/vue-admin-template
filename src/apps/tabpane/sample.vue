@@ -91,6 +91,7 @@
 import { ref, reactive } from 'vue';
 
 const message = ref('first');
+
 const state = reactive({
     unread: [
         {
@@ -116,16 +117,16 @@ const state = reactive({
     ],
 });
 
-const handleRead = index => {
-    const item = state.unread.splice(index, 1);
+const handleRead = (idx: number) => {
+    const item = state.unread.splice(idx, 1);
     state.read = item.concat(state.read);
 };
-const handleDel = index => {
-    const item = state.read.splice(index, 1);
+const handleDel = (idx: number) => {
+    const item = state.read.splice(idx, 1);
     state.recycle = item.concat(state.recycle);
 };
-const handleRestore = index => {
-    const item = state.recycle.splice(index, 1);
+const handleRestore = (idx: number) => {
+    const item = state.recycle.splice(idx, 1);
     state.read = item.concat(state.read);
 };
 </script>
@@ -135,6 +136,7 @@ const handleRestore = index => {
     cursor: pointer;
     color: #20a0ff;
 }
+
 .handle-row {
     margin-top: 30px;
 }

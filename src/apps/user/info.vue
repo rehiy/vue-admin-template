@@ -105,18 +105,18 @@ const onSubmit = () => {
     console.log('submited');
 };
 
-const avatarImg = ref(avatar);
+const cropper = ref();
 const imgSrc = ref('');
 const cropImg = ref('');
+const avatarImg = ref(avatar);
 const dialogVisible = ref(false);
-const cropper = ref(null);
 
 const showDialog = () => {
     dialogVisible.value = true;
     imgSrc.value = avatarImg.value;
 };
 
-const setImage = e => {
+const setImage = (e: Event) => {
     const file = e.target.files[0];
     if (!file.type.includes('image/')) {
         return;
@@ -124,7 +124,7 @@ const setImage = e => {
     const reader = new FileReader();
     reader.onload = event => {
         dialogVisible.value = true;
-        imgSrc.value = event.target.result as string;
+        imgSrc.value = '' + event.target.result;
         cropper.value && cropper.value.replace(event.target.result);
     };
     reader.readAsDataURL(file);

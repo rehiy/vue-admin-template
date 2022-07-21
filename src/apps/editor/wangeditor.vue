@@ -33,18 +33,21 @@ const content = reactive({
     html: '',
     text: '',
 });
-let instance;
+
+let instance: WangEditor;
+
 onMounted(() => {
     instance = new WangEditor(editor.value);
     instance.config.zIndex = 1;
     instance.create();
 });
+
 onBeforeUnmount(() => {
     instance.destroy();
-    instance = null;
 });
+
 const syncHTML = () => {
-    content.html = instance.txt.html();
+    content.html = '' + instance.txt.html();
     console.log(content.html);
 };
 </script>

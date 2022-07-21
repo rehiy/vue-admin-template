@@ -146,7 +146,7 @@ const username = session.username;
 const role = username === 'admin' ? '超级管理员' : '普通用户';
 
 const todoList = reactive([]);
-Api.local.getTodolist().then(data => {
+Api.local.getTodolist().then((data: never[]) => {
     todoList.push(...data);
 });
 
