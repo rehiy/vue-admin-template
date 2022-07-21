@@ -6,7 +6,9 @@
                 <Expand v-else />
             </el-icon>
         </div>
-        <div class="logo">Vue Admin</div>
+        <div class="logo">
+            Vue Admin
+        </div>
         <!-- 消息中心 -->
         <div class="btn-bell">
             <el-tooltip effect="dark" :content="message ? `有 ${message} 条未读消息` : `消息中心`" placement="bottom">
@@ -16,12 +18,12 @@
                     </el-icon>
                 </router-link>
             </el-tooltip>
-            <span v-if="message" class="btn-bell-badge"></span>
+            <span v-if="message" class="btn-bell-badge" />
         </div>
         <div class="header-user-con">
             <!-- 用户头像 -->
             <div class="user-avator">
-                <img src="@/assets/img/avatar.jpg" />
+                <img src="@/assets/img/avatar.jpg">
             </div>
             <!-- 用户名下拉菜单 -->
             <el-dropdown class="user-name" trigger="click" @command="userDropdown">
@@ -36,8 +38,12 @@
                         <a href="https://github.com/rehiy/vue-admin-template">
                             <el-dropdown-item>项目仓库</el-dropdown-item>
                         </a>
-                        <el-dropdown-item command="user">个人中心</el-dropdown-item>
-                        <el-dropdown-item divided command="loginout">退出登录</el-dropdown-item>
+                        <el-dropdown-item command="user">
+                            个人中心
+                        </el-dropdown-item>
+                        <el-dropdown-item divided command="loginout">
+                            退出登录
+                        </el-dropdown-item>
                     </el-dropdown-menu>
                 </template>
             </el-dropdown>

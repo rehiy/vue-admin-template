@@ -13,36 +13,44 @@
         <div class="container">
             <div class="handle-box">
                 <el-select v-model="query.address" placeholder="地址" class="handle-select mr10">
-                    <el-option key="1" label="广东省" value="广东省"></el-option>
-                    <el-option key="2" label="湖南省" value="湖南省"></el-option>
+                    <el-option key="1" label="广东省" value="广东省" />
+                    <el-option key="2" label="湖南省" value="湖南省" />
                 </el-select>
-                <el-input v-model="query.name" placeholder="用户名" class="handle-input mr10"></el-input>
-                <el-button type="primary" icon="Search" @click="handleSearch">搜索</el-button>
+                <el-input v-model="query.name" placeholder="用户名" class="handle-input mr10" />
+                <el-button type="primary" icon="Search" @click="handleSearch">
+                    搜索
+                </el-button>
             </div>
             <el-table ref="multipleTable" :data="tableData" border class="table" header-cell-class-name="table-header">
-                <el-table-column prop="id" label="ID" width="55" align="center"></el-table-column>
-                <el-table-column prop="name" label="用户名"></el-table-column>
+                <el-table-column prop="id" label="ID" width="55" align="center" />
+                <el-table-column prop="name" label="用户名" />
                 <el-table-column label="账户余额">
-                    <template #default="scope">￥{{ scope.row.money }}</template>
+                    <template #default="scope">
+                        ￥{{ scope.row.money }}
+                    </template>
                 </el-table-column>
                 <el-table-column label="头像(查看大图)" align="center">
                     <template #default="scope">
-                        <el-image class="table-td-thumb" :src="scope.row.thumb" :preview-src-list="[scope.row.thumb]"> </el-image>
+                        <el-image class="table-td-thumb" :src="scope.row.thumb" :preview-src-list="[scope.row.thumb]" />
                     </template>
                 </el-table-column>
-                <el-table-column prop="address" label="地址"></el-table-column>
+                <el-table-column prop="address" label="地址" />
                 <el-table-column label="状态" align="center">
                     <template #default="scope">
                         <el-tag :type="scope.row.state === '成功' ? 'success' : scope.row.state === '失败' ? 'danger' : ''">
-                            {{ scope.row.state }}</el-tag
-                        >
+                            {{ scope.row.state }}
+                        </el-tag>
                     </template>
                 </el-table-column>
-                <el-table-column prop="date" label="注册时间"></el-table-column>
+                <el-table-column prop="date" label="注册时间" />
                 <el-table-column label="操作" width="180" align="center">
                     <template #default="scope">
-                        <el-button link type="primary" icon="Edit" @click="handleEdit(scope.$index, scope.row)">编辑 </el-button>
-                        <el-button link type="danger" icon="Delete" @click="handleDelete(scope.$index, scope.row)">删除 </el-button>
+                        <el-button link type="primary" icon="Edit" @click="handleEdit(scope.$index, scope.row)">
+                            编辑
+                        </el-button>
+                        <el-button link type="danger" icon="Delete" @click="handleDelete(scope.$index, scope.row)">
+                            删除
+                        </el-button>
                     </template>
                 </el-table-column>
             </el-table>
@@ -54,17 +62,17 @@
                     :page-size="query.pageSize"
                     :total="pageTotal"
                     @current-change="handlePageChange"
-                ></el-pagination>
+                />
             </div>
         </div>
         <!-- 编辑弹出框 -->
         <el-dialog v-model="editVisible" title="编辑" width="30%">
             <el-form label-width="70px">
                 <el-form-item label="用户名">
-                    <el-input v-model="form.name"></el-input>
+                    <el-input v-model="form.name" />
                 </el-form-item>
                 <el-form-item label="地址">
-                    <el-input v-model="form.address"></el-input>
+                    <el-input v-model="form.address" />
                 </el-form-item>
             </el-form>
             <template #footer>

@@ -14,13 +14,15 @@
                 <template v-if="item.subs">
                     <el-sub-menu :key="index" :index="item.index">
                         <template #title>
-                            <component :is="item.icon" class="el-icon"></component>
+                            <component :is="item.icon" class="el-icon" />
                             <span>{{ item.title }}</span>
                         </template>
                         <template v-for="(subItem, idx) in item.subs">
                             <template v-if="subItem.subs">
                                 <el-sub-menu :key="idx" :index="subItem.index">
-                                    <template #title>{{ subItem.title }}</template>
+                                    <template #title>
+                                        {{ subItem.title }}
+                                    </template>
                                     <el-menu-item v-for="(threeItem, i) in subItem.subs" :key="i" :index="threeItem.index">
                                         {{ threeItem.title }}
                                     </el-menu-item>
@@ -36,8 +38,10 @@
                 </template>
                 <template v-else>
                     <el-menu-item :key="index" :index="item.index">
-                        <component :is="item.icon" class="el-icon"></component>
-                        <template #title>{{ item.title }}</template>
+                        <component :is="item.icon" class="el-icon" />
+                        <template #title>
+                            {{ item.title }}
+                        </template>
                     </el-menu-item>
                 </template>
             </template>

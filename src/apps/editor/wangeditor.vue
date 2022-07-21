@@ -16,8 +16,10 @@
                 wangEditor：轻量级 web 富文本编辑器，配置方便，使用简单。项目地址：
                 <a href="https://www.wangeditor.com/doc/" target="_blank">wangEditor</a>
             </div>
-            <div ref="editor" class="mgb20"></div>
-            <el-button type="primary" @click="syncHTML">提交</el-button>
+            <div ref="editor" class="mgb20" />
+            <el-button type="primary" @click="syncHTML">
+                提交
+            </el-button>
         </div>
     </div>
 </template>

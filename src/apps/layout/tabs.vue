@@ -1,12 +1,14 @@
 <template>
     <div v-if="layout.tabsList.length > 0" class="tabs">
         <el-button v-for="(item, index) in layout.tabsList" :key="index" :type="isActive(item.path) ? 'primary' : ''">
-            <router-link :to="item.path">{{ item.title }}</router-link>
+            <router-link :to="item.path">
+                {{ item.title }}
+            </router-link>
             <el-icon class="el-icon--right" @click="closeTabs(index)">
                 <Close />
             </el-icon>
         </el-button>
-        <span style="flex: auto"></span>
+        <span style="flex: auto" />
         <el-dropdown @command="handleTabs">
             <el-button type="primary">
                 标签选项
@@ -16,8 +18,12 @@
             </el-button>
             <template #dropdown>
                 <el-dropdown-menu size="small">
-                    <el-dropdown-item command="other">关闭其他</el-dropdown-item>
-                    <el-dropdown-item command="all">关闭所有</el-dropdown-item>
+                    <el-dropdown-item command="other">
+                        关闭其他
+                    </el-dropdown-item>
+                    <el-dropdown-item command="all">
+                        关闭所有
+                    </el-dropdown-item>
                 </el-dropdown-menu>
             </template>
         </el-dropdown>

@@ -15,54 +15,60 @@
             <div class="form-box">
                 <el-form ref="formRef" :rules="rules" :model="form" label-width="80px">
                     <el-form-item label="表单名称" prop="name">
-                        <el-input v-model="form.name"></el-input>
+                        <el-input v-model="form.name" />
                     </el-form-item>
                     <el-form-item label="选择器" prop="region">
                         <el-select v-model="form.region" placeholder="请选择">
-                            <el-option key="bbk" label="步步高" value="bbk"></el-option>
-                            <el-option key="xtc" label="小天才" value="xtc"></el-option>
-                            <el-option key="imoo" label="imoo" value="imoo"></el-option>
+                            <el-option key="bbk" label="步步高" value="bbk" />
+                            <el-option key="xtc" label="小天才" value="xtc" />
+                            <el-option key="imoo" label="imoo" value="imoo" />
                         </el-select>
                     </el-form-item>
                     <el-form-item label="日期时间">
                         <el-col :span="11">
                             <el-form-item prop="date1">
-                                <el-date-picker v-model="form.date1" type="date" placeholder="选择日期" style="width: 100%"> </el-date-picker>
+                                <el-date-picker v-model="form.date1" type="date" placeholder="选择日期" style="width: 100%" />
                             </el-form-item>
                         </el-col>
-                        <el-col class="line" :span="2">-</el-col>
+                        <el-col class="line" :span="2">
+                            -
+                        </el-col>
                         <el-col :span="11">
                             <el-form-item prop="date2">
-                                <el-time-picker v-model="form.date2" placeholder="选择时间" style="width: 100%"> </el-time-picker>
+                                <el-time-picker v-model="form.date2" placeholder="选择时间" style="width: 100%" />
                             </el-form-item>
                         </el-col>
                     </el-form-item>
                     <el-form-item label="城市级联" prop="options">
-                        <el-cascader v-model="form.options" :options="options"></el-cascader>
+                        <el-cascader v-model="form.options" :options="options" />
                     </el-form-item>
                     <el-form-item label="选择开关" prop="delivery">
-                        <el-switch v-model="form.delivery"></el-switch>
+                        <el-switch v-model="form.delivery" />
                     </el-form-item>
                     <el-form-item label="多选框" prop="type">
                         <el-checkbox-group v-model="form.type">
-                            <el-checkbox label="步步高" name="type"></el-checkbox>
-                            <el-checkbox label="小天才" name="type"></el-checkbox>
-                            <el-checkbox label="imoo" name="type"></el-checkbox>
+                            <el-checkbox label="步步高" name="type" />
+                            <el-checkbox label="小天才" name="type" />
+                            <el-checkbox label="imoo" name="type" />
                         </el-checkbox-group>
                     </el-form-item>
                     <el-form-item label="单选框" prop="resource">
                         <el-radio-group v-model="form.resource">
-                            <el-radio label="步步高"></el-radio>
-                            <el-radio label="小天才"></el-radio>
-                            <el-radio label="imoo"></el-radio>
+                            <el-radio label="步步高" />
+                            <el-radio label="小天才" />
+                            <el-radio label="imoo" />
                         </el-radio-group>
                     </el-form-item>
                     <el-form-item label="文本框" prop="desc">
-                        <el-input v-model="form.desc" type="textarea" rows="5"></el-input>
+                        <el-input v-model="form.desc" type="textarea" rows="5" />
                     </el-form-item>
                     <el-form-item>
-                        <el-button type="primary" @click="onSubmit">表单提交</el-button>
-                        <el-button @click="onReset">重置表单</el-button>
+                        <el-button type="primary" @click="onSubmit">
+                            表单提交
+                        </el-button>
+                        <el-button @click="onReset">
+                            重置表单
+                        </el-button>
                     </el-form-item>
                 </el-form>
             </div>

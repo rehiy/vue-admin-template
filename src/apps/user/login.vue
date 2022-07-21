@@ -1,7 +1,9 @@
 <template>
     <div class="login-wrap">
         <div class="vt-login">
-            <div class="vt-title">Vue Admin</div>
+            <div class="vt-title">
+                Vue Admin
+            </div>
             <el-form ref="login" :model="param" :rules="rules" label-width="0px" class="vt-content">
                 <el-form-item prop="username">
                     <el-input v-model="param.username" placeholder="用户名">
@@ -22,7 +24,9 @@
                     </el-input>
                 </el-form-item>
                 <div class="login-btn">
-                    <el-button type="primary" @click="submitForm()">登录</el-button>
+                    <el-button type="primary" @click="submitForm()">
+                        登录
+                    </el-button>
                 </div>
             </el-form>
         </div>

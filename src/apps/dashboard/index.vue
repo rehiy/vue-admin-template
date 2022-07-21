@@ -4,14 +4,20 @@
             <el-col :span="8">
                 <el-card shadow="hover" class="mgb20" style="height: 252px">
                     <div class="user-info">
-                        <img src="@/assets/img/avatar.jpg" class="user-avator" />
+                        <img src="@/assets/img/avatar.jpg" class="user-avator">
                         <div class="user-info-cont">
-                            <div class="user-info-name">{{ username }}</div>
+                            <div class="user-info-name">
+                                {{ username }}
+                            </div>
                             <div>{{ role }}</div>
                         </div>
                     </div>
-                    <div class="user-info-list">上次登录时间： <span>2019-11-01</span></div>
-                    <div class="user-info-list">上次登录地点： <span>上清</span></div>
+                    <div class="user-info-list">
+                        上次登录时间： <span>2019-11-01</span>
+                    </div>
+                    <div class="user-info-list">
+                        上次登录地点： <span>上清</span>
+                    </div>
                 </el-card>
                 <el-card shadow="hover" style="height: 252px">
                     <template #header>
@@ -20,13 +26,13 @@
                         </div>
                     </template>
                     Vue
-                    <el-progress :percentage="71.3" color="#42b983"></el-progress>
+                    <el-progress :percentage="71.3" color="#42b983" />
                     JavaScript
-                    <el-progress :percentage="24.1" color="#f1e05a"></el-progress>
+                    <el-progress :percentage="24.1" color="#f1e05a" />
                     CSS
-                    <el-progress :percentage="13.7"></el-progress>
+                    <el-progress :percentage="13.7" />
                     HTML
-                    <el-progress :percentage="5.9" color="#f56c6c"></el-progress>
+                    <el-progress :percentage="5.9" color="#f56c6c" />
                 </el-card>
             </el-col>
             <el-col :span="16">
@@ -38,7 +44,9 @@
                                     <UserFilled />
                                 </el-icon>
                                 <div class="grid-cont-right">
-                                    <div class="grid-num">1234</div>
+                                    <div class="grid-num">
+                                        1234
+                                    </div>
                                     <div>用户访问量</div>
                                 </div>
                             </div>
@@ -51,7 +59,9 @@
                                     <Message />
                                 </el-icon>
                                 <div class="grid-cont-right">
-                                    <div class="grid-num">321</div>
+                                    <div class="grid-num">
+                                        321
+                                    </div>
                                     <div>系统消息</div>
                                 </div>
                             </div>
@@ -64,7 +74,9 @@
                                     <Goods />
                                 </el-icon>
                                 <div class="grid-cont-right">
-                                    <div class="grid-num">5000</div>
+                                    <div class="grid-num">
+                                        5000
+                                    </div>
                                     <div>数量</div>
                                 </div>
                             </div>
@@ -75,13 +87,15 @@
                     <template #header>
                         <div class="card-header">
                             <span>待办事项</span>
-                            <el-button style="float: right; padding: 3px 10px 0" link>添加</el-button>
+                            <el-button style="float: right; padding: 3px 10px 0" link>
+                                添加
+                            </el-button>
                         </div>
                     </template>
                     <el-table :show-header="false" :data="todoList" style="width: 100%">
                         <el-table-column width="40">
                             <template #default="scope">
-                                <el-checkbox v-model="scope.row.status"></el-checkbox>
+                                <el-checkbox v-model="scope.row.status" />
                             </template>
                         </el-table-column>
                         <el-table-column>

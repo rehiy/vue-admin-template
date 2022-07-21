@@ -25,7 +25,9 @@
                     <em>点击上传</em>
                 </div>
                 <template #tip>
-                    <div class="el-upload__tip">只能上传 jpg/png 文件，且不超过 500kb</div>
+                    <div class="el-upload__tip">
+                        只能上传 jpg/png 文件，且不超过 500kb
+                    </div>
                 </template>
             </el-upload>
         </div>

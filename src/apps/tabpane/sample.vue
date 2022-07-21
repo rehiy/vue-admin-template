@@ -19,15 +19,19 @@
                                 <span class="message-title">{{ scope.row.title }}</span>
                             </template>
                         </el-table-column>
-                        <el-table-column prop="date" width="180"></el-table-column>
+                        <el-table-column prop="date" width="180" />
                         <el-table-column width="120">
                             <template #default="scope">
-                                <el-button @click="handleRead(scope.$index)">标为已读</el-button>
+                                <el-button @click="handleRead(scope.$index)">
+                                    标为已读
+                                </el-button>
                             </template>
                         </el-table-column>
                     </el-table>
                     <div class="handle-row">
-                        <el-button type="primary">全部标为已读</el-button>
+                        <el-button type="primary">
+                            全部标为已读
+                        </el-button>
                     </div>
                 </el-tab-pane>
                 <el-tab-pane :label="`已读消息(${state.read.length})`" name="second">
@@ -38,15 +42,19 @@
                                     <span class="message-title">{{ scope.row.title }}</span>
                                 </template>
                             </el-table-column>
-                            <el-table-column prop="date" width="180"></el-table-column>
+                            <el-table-column prop="date" width="180" />
                             <el-table-column width="120">
                                 <template #default="scope">
-                                    <el-button type="danger" @click="handleDel(scope.$index)">删除</el-button>
+                                    <el-button type="danger" @click="handleDel(scope.$index)">
+                                        删除
+                                    </el-button>
                                 </template>
                             </el-table-column>
                         </el-table>
                         <div class="handle-row">
-                            <el-button type="danger">删除全部</el-button>
+                            <el-button type="danger">
+                                删除全部
+                            </el-button>
                         </div>
                     </template>
                 </el-tab-pane>
@@ -58,15 +66,19 @@
                                     <span class="message-title">{{ scope.row.title }}</span>
                                 </template>
                             </el-table-column>
-                            <el-table-column prop="date" width="180"></el-table-column>
+                            <el-table-column prop="date" width="180" />
                             <el-table-column width="120">
                                 <template #default="scope">
-                                    <el-button @click="handleRestore(scope.$index)">还原</el-button>
+                                    <el-button @click="handleRestore(scope.$index)">
+                                        还原
+                                    </el-button>
                                 </template>
                             </el-table-column>
                         </el-table>
                         <div class="handle-row">
-                            <el-button type="danger">清空回收站</el-button>
+                            <el-button type="danger">
+                                清空回收站
+                            </el-button>
                         </div>
                     </template>
                 </el-tab-pane>
