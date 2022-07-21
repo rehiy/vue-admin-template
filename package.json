@@ -6,7 +6,8 @@
         "dev": "vite --open --mode development",
         "build": "vite build --mode release",
         "preview": "vite preview",
-        "lint": "eslint --ext ts --ext js --ext vue src/"
+        "lint": "eslint src/**/*.{js,ts,vue}",
+        "lint:fix": "eslint --fix src/**/*.{js,ts,vue}"
     },
     "dependencies": {
         "@element-plus/icons-vue": "^2.0.4",
@@ -27,12 +28,9 @@
         "@vitejs/plugin-vue": "^2.3.3",
         "@vue/compiler-sfc": "^3.2.37",
         "eslint": "^8.17.0",
-        "eslint-config-prettier": "^8.5.0",
         "eslint-plugin-import": "^2.26.0",
-        "eslint-plugin-prettier": "^4.0.0",
         "eslint-plugin-vue": "^9.1.0",
         "eslint-plugin-vue-scoped-css": "^2.2.0",
-        "prettier": "^2.6.2",
         "sass": "^1.52.3",
         "typescript": "^4.7.3",
         "vite": "^2.9.10",

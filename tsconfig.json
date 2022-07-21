@@ -7,14 +7,14 @@
         "sourceMap": true,
         "resolveJsonModule": true,
         "esModuleInterop": true,
-        "lib": [
-            "esnext",
-            "dom"
-        ],
-        "types": [
-            "pinia-plugin-persist"
-        ],
+        "isolatedModules": true,
+        "skipLibCheck": true,
         "noEmit": true,
+        "strict": true,
+        "lib": [
+            "ESNext",
+            "DOM"
+        ],
         "baseUrl": "./",
         "paths": {
             "@/*": [
@@ -23,11 +23,11 @@
         }
     },
     "include": [
-        "**/*.ts",
-        "src/**/*.d.ts",
+        "*.ts",
+        "*.d.ts",
         "src/**/*.ts",
+        "src/**/*.d.ts",
         "src/**/*.tsx",
         "src/**/*.vue"
-    ],
-    "compileOnSave": false
+    ]
 }
