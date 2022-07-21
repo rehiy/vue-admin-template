@@ -137,7 +137,7 @@ const handleDelete = index => {
 // 表格编辑时弹窗和保存
 const editVisible = ref(false);
 
-let form = reactive({
+const form = reactive({
     name: '',
     address: '',
 });

@@ -4,9 +4,9 @@
             <div class="vt-title">
                 Vue Admin
             </div>
-            <el-form ref="login" :model="param" :rules="rules" label-width="0px" class="vt-content">
+            <el-form ref="formRef" :model="formModel" :rules="formRules" label-width="0px" class="vt-content">
                 <el-form-item prop="username">
-                    <el-input v-model="param.username" placeholder="用户名">
+                    <el-input v-model="formModel.username" placeholder="用户名">
                         <template #prepend>
                             <el-icon>
                                 <User />
@@ -15,7 +15,7 @@
                     </el-input>
                 </el-form-item>
                 <el-form-item prop="password">
-                    <el-input v-model="param.password" type="password" placeholder="密码" @keyup.enter="submitForm()">
+                    <el-input v-model="formModel.password" type="password" placeholder="密码" @keyup.enter="formSubmit(formRef)">
                         <template #prepend>
                             <el-icon>
                                 <Lock />
@@ -24,7 +24,7 @@
                     </el-input>
                 </el-form-item>
                 <div class="login-btn">
-                    <el-button type="primary" @click="submitForm()">
+                    <el-button type="primary" @click="formSubmit(formRef)">
                         登录
                     </el-button>
                 </div>
@@ -36,7 +36,7 @@
 <script lang="ts" setup>
 import { ref, reactive } from 'vue';
 import { useRouter } from 'vue-router';
-import { ElMessage } from 'element-plus';
+import { ElMessage, FormInstance, FormRules } from "element-plus"
 
 import layoutStore from '@/store/layout';
 import sessionStore from '@/store/session';
@@ -45,23 +45,23 @@ const router = useRouter();
 const layout = layoutStore();
 const session = sessionStore();
 
-const param = reactive({
+const formRef = ref<FormInstance>();
+
+const formModel = reactive({
     username: import.meta.env.VITE_USERNAME || '',
     password: import.meta.env.VITE_PASSWORD || '',
 });
 
-const rules = {
+const formRules: FormRules = {
     username: [{ required: true, message: '请输入用户名', trigger: 'blur' }],
     password: [{ required: true, message: '请输入密码', trigger: 'blur' }],
 };
 
-const login = ref(null);
-
-const submitForm = () => {
-    login.value.validate(valid => {
+const formSubmit = (form: FormInstance | undefined) => {
+    form && form.validate(valid => {
         if (valid) {
             ElMessage.success('登录成功');
-            session.username = param.username;
+            session.username = formModel.username;
             router.push('/');
         } else {
             ElMessage.error('登录失败');
