@@ -2,13 +2,47 @@
 
 基于 Vue3 + Vite + Pinia + Element Plus 的后台管理系统模板
 
+## 编译并打包
+
+在项目目录运行  `build.bat` 或 `./build.sh`
+
 ## 运行开发服务
 
 在项目目录运行  `serve.bat` 或 `./serve.sh`
 
-## 编译并打包
+## 开发 `vscode` 配置
 
-在项目目录运行  `build.bat` 或 `./build.sh`
+项目编辑器推荐使用 `vscode`，并设置代码格式化插件如下
+
+```json
+{
+    "[css]": {
+        "editor.defaultFormatter": "vscode.css-language-features"
+    },
+    "[scss]": {
+        "editor.defaultFormatter": "vscode.css-language-features"
+    },
+    "[html]": {
+        "editor.defaultFormatter": "vscode.html-language-features"
+    },
+    "[json]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "[jsonc]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+    "[typescript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+    "[vue]": {
+        "editor.defaultFormatter": "Vue.volar"
+    }
+}
+
+```
 
 # 特别说明
 
